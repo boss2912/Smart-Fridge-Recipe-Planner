@@ -1,0 +1,74 @@
+name: งานใหม่ (Task)
+description: งานที่คนเดียวทำจบได้ใน 1-2 วัน
+labels: ["type:task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **ก่อนกรอก ให้เช็คขนาดก่อน** ถ้าตอบ "ไม่" ข้อใดข้อหนึ่ง แปลว่ายังใหญ่ไป ให้ซอยเป็นหลายอัน
+
+        - คนเดียวทำจบได้ใน 1-2 วัน
+        - เขียนเงื่อนไขความสำเร็จได้ไม่เกิน 5 ข้อ
+
+  - type: textarea
+    id: why
+    attributes:
+      label: ทำไปทำไม
+      description: งานนี้ช่วยให้ส่งงานขั้นไหนได้ หรือทำให้ระบบทำอะไรได้
+      placeholder: |
+        ขั้น 2 ต้องมี ER Diagram ที่ครอบข้อมูลหลักครบ 8 อย่าง
+    validations:
+      required: true
+
+  - type: textarea
+    id: criteria
+    attributes:
+      label: เงื่อนไขความสำเร็จ
+      description: >
+        สิ่งที่ตรวจได้ด้วยการดูผลลัพธ์
+        MUST = ไม่ทำถือว่ายังไม่เสร็จ · MAY = มีก็ดี ไม่มีก็ปิด issue ได้
+      value: |
+        - [ ] **MUST**
+        - [ ] **MUST**
+        - [ ] MAY
+    validations:
+      required: true
+
+  - type: textarea
+    id: verify
+    attributes:
+      label: ตรวจยังไง
+      description: ขั้นตอนที่คนอื่นทำตามแล้วเห็นผลเหมือนกัน
+      placeholder: |
+        เปิด design/er-diagram.drawio ใน draw.io แล้วนับ entity ให้ครบตาม docs/proposal.md ข้อ 6
+    validations:
+      required: true
+
+  - type: input
+    id: blocked
+    attributes:
+      label: ต้องรออะไรก่อน
+      description: ใส่เลข issue ที่ต้องเสร็จก่อน เว้นว่างได้ถ้าเริ่มได้เลย
+      placeholder: "#3, #5"
+
+  - type: dropdown
+    id: owner
+    attributes:
+      label: ใครทำ
+      options:
+        - "คนที่ 1 - ประสานงาน + Proposal"
+        - "คนที่ 2 - ER Diagram"
+        - "คนที่ 3 - Relational Schema + Normalization"
+        - "คนที่ 4 - SQL สร้างตาราง + ข้อมูลตัวอย่าง"
+        - "คนที่ 5 - SQL query"
+        - "คนที่ 6 - รายงาน + สไลด์"
+        - "ทั้งทีม"
+    validations:
+      required: true
+
+  - type: textarea
+    id: refs
+    attributes:
+      label: อ้างอิง
+      description: เลขหน้าสไลด์ ไฟล์ในโปรเจกต์ หรือลิงก์ที่เกี่ยวข้อง
+      placeholder: "Lecture 1 หน้า 11 · docs/COURSE_REQUIREMENTS.md"
