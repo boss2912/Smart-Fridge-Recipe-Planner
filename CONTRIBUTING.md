@@ -53,7 +53,7 @@ git push -u origin 12-er-diagram
 ```
 
 **type**: `feat` · `fix` · `docs` · `chore`
-**scope**: `proposal` · `design` · `db` · `report` · `tools`
+**scope**: `proposal` · `design` · `db` · `report`
 
 ตัวอย่างที่ดี:
 
@@ -69,10 +69,9 @@ fix(db): query แนะนำเมนูไม่นับล็อตที�
 
 ## Pull Request
 
-### ก่อนเปิด PR — ตรวจ 5 ข้อนี้
+### ก่อนเปิด PR — ตรวจ 4 ข้อนี้
 
-- [ ] `python tools/check_doc_links.py` ผ่าน
-- [ ] ไม่มีชื่อ รหัสนักศึกษา หรืออีเมลของสมาชิกใน diff ([ADR-006](docs/DECISIONS.md#adr-006--รายชื่อสมาชิกไม่ขึ้น-repo-สาธารณะ))
+- [ ] ไม่มีอีเมลของสมาชิกใน diff ([ADR-007](docs/DECISIONS.md#adr-007--รายชื่อสมาชิกและรหัสนักศึกษาขึ้น-readme))
 - [ ] ไม่มีไฟล์ฐานข้อมูล (`.db`, `.sqlite`) ใน diff
 - [ ] อัปเดต `README.md` ของโฟลเดอร์ที่แก้
 - [ ] ถ้าตัดสินใจเรื่องที่คนอื่นอาจแก้กลับ → เพิ่ม ADR ใน [`docs/DECISIONS.md`](docs/DECISIONS.md)
@@ -93,7 +92,7 @@ fix(db): query แนะนำเมนูไม่นับล็อตที�
 
 | ห้าม | เพราะ |
 |---|---|
-| ใส่ชื่อ รหัสนักศึกษา หรืออีเมลของสมาชิกลง repo | repo เป็นสาธารณะ ([ADR-006](docs/DECISIONS.md#adr-006--รายชื่อสมาชิกไม่ขึ้น-repo-สาธารณะ)) |
+| ใส่อีเมลของสมาชิกลง repo | repo เป็นสาธารณะ ([ADR-007](docs/DECISIONS.md#adr-007--รายชื่อสมาชิกและรหัสนักศึกษาขึ้น-readme)) |
 | commit ไฟล์ `.db` / `.sqlite` | ฐานข้อมูลต้องสร้างใหม่ได้จากสคริปต์ SQL เสมอ |
 | `git push --force` ไปที่ `main` / `develop` | ทับงานคนอื่น |
 | แก้โฟลเดอร์ที่คนอื่นดูแลโดยไม่บอก | งานทับกันและ conflict |
