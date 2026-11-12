@@ -40,7 +40,7 @@ body:
       label: ตรวจยังไง
       description: ขั้นตอนที่คนอื่นทำตามแล้วเห็นผลเหมือนกัน
       placeholder: |
-        เปิด design/er-diagram.drawio ใน draw.io แล้วนับ entity ให้ครบตาม docs/proposal.md ข้อ 6
+        เปิด design/er-diagram.drawio.png ใน draw.io แล้วนับ entity ให้ครบตาม docs/proposal.md ข้อ 6
     validations:
       required: true
 
