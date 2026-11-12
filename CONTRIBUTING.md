@@ -1,6 +1,6 @@
 # กติกาการทำงานร่วมกัน — Smart Fridge & Recipe Planner
 
-> ⬜ **ร่าง — กลุ่มยังไม่ได้ตกลง** และยังไม่ได้ตั้งค่าป้องกัน branch บน GitHub
+> ⬜ **ร่าง — กลุ่มยังไม่ได้ตกลง** · ตั้งป้องกัน main กับ develop บน GitHub แล้ว
 
 ---
 
@@ -20,7 +20,7 @@ develop ───●───●───●───●───●───●
 | `develop` | รวมงานทุกคน ตรวจก่อนขึ้น `main` · 🔒 ควรตั้งป้องกันไว้ |
 | `<เลข issue>-<เรื่อง>` | งานแต่ละชิ้น เช่น `12-er-diagram`, `20-ddl-lot-table` |
 
-"ป้องกันไว้" หมายถึงตั้ง ruleset บน GitHub ว่า *"Changes must be made through a pull request"* ใครก็ push ตรงเข้า branch นั้นไม่ได้ ต้องเปิด PR เท่านั้น เจ้าของ repo ต้องตั้งเองในหน้า Settings
+"ป้องกันไว้" หมายถึงตั้ง ruleset บน GitHub เปิดกฎ *"Require a pull request before merging"* (Required approvals = 1) กับ *"Block force pushes"* push ตรงเข้า branch นั้นไม่ได้ ต้องเปิด PR และมีคนอื่น approve 1 คนก่อน merge ยกเว้นคนที่มีสิทธิ์ admin ของ repo (ตอนนี้มีแค่เจ้าของ repo) ที่ข้ามกฎได้
 
 ---
 
@@ -53,7 +53,7 @@ git push -u origin 12-er-diagram
 ```
 
 **type**: `feat` · `fix` · `docs` · `chore`
-**scope**: `proposal` · `design` · `db` · `report` · `nginx` · `frontend` · `backend`
+**scope** (ใส่หรือไม่ใส่ก็ได้): `proposal` · `design` · `db` · `report` · `nginx` · `frontend` · `backend`
 
 ตัวอย่างที่ดี:
 

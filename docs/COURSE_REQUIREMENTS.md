@@ -119,7 +119,7 @@ Phase 3  Mini-Project
 | ข้อ | สไลด์เขียนว่า |
 |---|---|
 | Primary Keys | Every table must have a designated Primary Key (PK). |
-| Foreign Keys | Proper Foreign Keys (FK) must be enforced to maintain Referential Integrity. |
+| Foreign Keys | Proper Foreign Keys (FK) must be enforced to maintain Referential Integrity (e.g., deleting a product variation should be restricted if it exists in an order). |
 | Nullability | Essential fields like Email, Product Name, and Order Total cannot be NULL. |
 | Uniqueness | User Emails must be unique across the system. |
 
