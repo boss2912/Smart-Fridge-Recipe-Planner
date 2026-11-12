@@ -38,6 +38,7 @@ Closes #
 **พื้นฐาน**
 
 - [ ] อ่าน [`CONTRIBUTING.md`](../CONTRIBUTING.md) แล้ว
+- [ ] ช่อง base ของ PR นี้เป็น `develop` (ยกเว้น PR develop→main)
 - [ ] รีวิว diff ของตัวเองก่อนแล้ว
 - [ ] ไม่มีการแก้ที่ไม่เกี่ยวข้องปนมาใน PR นี้
 

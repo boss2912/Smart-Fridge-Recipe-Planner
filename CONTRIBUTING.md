@@ -20,7 +20,12 @@ develop ───●───●───●───●───●───●
 | `develop` | รวมงานทุกคน ตรวจก่อนขึ้น `main` · 🔒 ตั้งป้องกันแล้ว |
 | `<เลข issue>-<เรื่อง>` | งานแต่ละชิ้น เช่น `12-er-diagram`, `20-ddl-lot-table` |
 
-"ป้องกันไว้" หมายถึงตั้ง ruleset บน GitHub เปิดกฎ *"Require a pull request before merging"* (Required approvals = 1) กับ *"Block force pushes"* push ตรงเข้า branch นั้นไม่ได้ ต้องเปิด PR และมีคนอื่น approve 1 คนก่อน merge ยกเว้นคนที่มีสิทธิ์ admin ของ repo (ตอนนี้มีแค่เจ้าของ repo) ที่ข้ามกฎได้
+"ป้องกันไว้" หมายถึงตั้ง ruleset บน GitHub เปิดกฎ *"Require a pull request before merging"* (Required approvals = 1 · *"Dismiss stale pull request approvals when new commits are pushed"* · *"Require approval of the most recent reviewable push"*) กับ *"Block force pushes"* ส่วน `develop` เปิด *"Restrict deletions"* เพิ่ม
+
+- push ตรงเข้า branch นั้นไม่ได้ ต้องเปิด PR และมีคนอื่น approve 1 คนก่อน merge
+- push แก้เพิ่มหลังได้ approve แล้ว approve เดิมหายไป ต้องให้คนอื่นที่ไม่ใช่คน push approve ใหม่
+- ลบ `develop` ไม่ได้ แม้จะมีปุ่ม Delete branch ขึ้นหลัง merge PR develop→main
+- ไม่มีใครข้ามกฎได้ รวมถึงเจ้าของ repo
 
 ---
 
@@ -42,7 +47,14 @@ git commit -m "docs(design): ER diagram ฉบับแรก"
 git push -u origin 12-er-diagram
 ```
 
-ถ้า `develop` ขยับไประหว่างทำ ให้ `git merge develop` เข้า branch ตัวเอง แล้วแก้ conflict ที่นั่น ไม่ใช่แก้ใน PR
+ตอนเปิด PR ช่อง base ต้องเป็น `develop` GitHub จะตั้งเป็น `main` ให้เอง ต้องเปลี่ยนก่อนกดสร้าง
+
+ถ้า `develop` บน GitHub ขยับไประหว่างทำ ให้ดึงของใหม่มาก่อนแล้ว merge เข้า branch ตัวเอง แก้ conflict ที่นั่น ไม่ใช่แก้ใน PR
+
+```bash
+git fetch origin
+git merge origin/develop
+```
 
 ---
 
@@ -80,6 +92,7 @@ fix(db): query แนะนำเมนูไม่นับล็อตที�
 
 - ต้องมีคนอื่น approve อย่างน้อย 1 คนก่อน merge
 - คนเปิด PR ไม่ approve PR ตัวเอง
+- push แก้หลังได้ approve → ต้องขอ approve ใหม่
 - เจอปัญหา → บอกให้ชัดว่าปัญหาคืออะไร ไม่ใช่แค่ "แก้หน่อย"
 
 ### วิธี merge
