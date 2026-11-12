@@ -1,6 +1,6 @@
 # database/ — SQL Implementation Script
 
-👤 คนที่ 4 (DDL + ข้อมูลตัวอย่าง) · คนที่ 5 (query) — ตามร่างใน [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
+👤 ยังไม่ได้ตกลงว่าใครรับ · งานในโฟลเดอร์นี้: SQL สร้างตาราง + ข้อมูลตัวอย่าง · SQL query ตามกฎของระบบ — ดู [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
 
 > ⬜ **ขั้น 3 ยังไม่เริ่ม และยังไม่ใส่ไฟล์ SQL** จนกว่ากลุ่มจะเลือก DBMS ([ADR-005](../docs/DECISIONS.md#adr-005--เลือก-dbms))
 

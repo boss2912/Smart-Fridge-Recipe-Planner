@@ -10,6 +10,9 @@ Proposal   →   ER Diagram +   →    SQL           →    Final Report +
   🟡              ⬜                  ⬜                  ⬜
 
                └ Phase 1 ┘         └ Phase 2 ┘        └ Phase 3 ┘
+
+               Web app: Nginx · frontend · backend ────────────────►
+                 ⬜
 ```
 
 | สัญลักษณ์ | ความหมาย |
@@ -55,3 +58,11 @@ Phase 3 มี Consultation กับ Final Presentation (หน้า 10) · �
 - [ ] ถามอาจารย์เรื่องรูปแบบรายงานและเวลานำเสนอ
 - [ ] รายงาน
 - [ ] สไลด์นำเสนอ
+
+## ⬜ เว็บแอป · Nginx · frontend · backend
+
+เริ่มพร้อมขั้น 2 แล้วทำคู่กันไป ([ADR-008](DECISIONS.md#adr-008--ทำเป็นเว็บแอปที่ใช้งานได้จริง)) · งานอยู่ใน [`../nginx/`](../nginx/) · [`../frontend/`](../frontend/) · [`../backend/`](../backend/)
+
+- [ ] ตกลงคำขอ `/api/` ระหว่าง frontend กับ backend ([จุดที่ต้องคุยกันก่อนลงมือ](TEAM_AND_WORKFLOW.md#จุดที่ต้องคุยกันก่อนลงมือ))
+- [ ] Nginx · frontend · backend ตาม[ตารางใน README](../README.md#แต่ละส่วนต้องมีอะไร)
+- [ ] backend ต่อ database (ต้องเลือก DBMS ก่อน · [ADR-005](DECISIONS.md#adr-005--เลือก-dbms))

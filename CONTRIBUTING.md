@@ -53,7 +53,7 @@ git push -u origin 12-er-diagram
 ```
 
 **type**: `feat` · `fix` · `docs` · `chore`
-**scope**: `proposal` · `design` · `db` · `report`
+**scope**: `proposal` · `design` · `db` · `report` · `nginx` · `frontend` · `backend`
 
 ตัวอย่างที่ดี:
 

@@ -1,6 +1,6 @@
 # report/ — Final Report + Presentation
 
-👤 คนที่ 6 รวมเล่ม · ทุกคนเขียนส่วนของตัวเอง — ตามร่างใน [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
+👤 ยังไม่ได้ตกลงว่าใครรับ · งานในโฟลเดอร์นี้: รายงาน + สไลด์นำเสนอ (ทุกคนเขียนส่วนของตัวเอง) — ดู [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
 
 > ⬜ **ขั้น 4 ยังไม่เริ่ม**
 

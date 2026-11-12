@@ -129,7 +129,7 @@ Smart-Fridge-Recipe-Planner/
 └── .github/    แม่แบบ PR + issue
 ```
 
-**ทุกโฟลเดอร์มี `README.md` ของตัวเอง** บอกว่าใส่อะไร ใครดูแล และอ้างอิงสไลด์หน้าไหน
+**ทุกโฟลเดอร์ยกเว้น `docs/` กับ `.github/` มี `README.md` ของตัวเอง** บอกว่าใส่อะไร ใครดูแล และอ้างอิงสไลด์หน้าไหน
 
 โครง repo ดัดแปลงจาก [luma-webapp-g04](https://github.com/boss2912/luma-webapp-g04)
 

@@ -52,16 +52,20 @@ body:
       placeholder: "#3, #5"
 
   - type: dropdown
-    id: owner
+    id: part
     attributes:
-      label: ใครทำ
+      label: งานส่วนไหน
+      description: ชื่องานตรงกับหัวข้อใน docs/TEAM_AND_WORKFLOW.md ส่วนงานที่ทำร่วมกันเลือก ทั้งทีม · คนทำให้ใส่ที่ Assignees ของ issue
       options:
-        - "คนที่ 1 - ประสานงาน + Proposal"
-        - "คนที่ 2 - ER Diagram"
-        - "คนที่ 3 - Relational Schema + Normalization"
-        - "คนที่ 4 - SQL สร้างตาราง + ข้อมูลตัวอย่าง"
-        - "คนที่ 5 - SQL query"
-        - "คนที่ 6 - รายงาน + สไลด์"
+        - "ประสานงาน + Proposal"
+        - "ER Diagram"
+        - "Relational Schema + Normalization"
+        - "SQL สร้างตาราง + ข้อมูลตัวอย่าง"
+        - "SQL query ตามกฎของระบบ"
+        - "รายงาน + สไลด์นำเสนอ"
+        - "Nginx"
+        - "frontend"
+        - "backend"
         - "ทั้งทีม"
     validations:
       required: true

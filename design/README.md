@@ -1,6 +1,6 @@
 # design/ — ER Diagram + Relational Schema
 
-👤 คนที่ 2 (ER) · คนที่ 3 (Schema + Normalization) — ตามร่างใน [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
+👤 ยังไม่ได้ตกลงว่าใครรับ · งานในโฟลเดอร์นี้: ER Diagram · Relational Schema + Normalization — ดู [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
 
 > ⬜ **ขั้น 2 ยังไม่เริ่ม** — เริ่มเมื่ออาจารย์ยืนยันหัวข้อ
 
