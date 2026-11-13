@@ -22,7 +22,9 @@
 | 3 | SQL Implementation Script | ⬜ ยังไม่เริ่ม · ใช้ PostgreSQL → [`database/`](database/) |
 | 4 | Final Report & Presentation | ⬜ ยังไม่เริ่ม → [`report/`](report/) |
 
-ยังไม่ได้ตัดสิน: ใช้ DBMS ตัวไหน (SQLite หรือ MySQL) · แบ่งงาน 7 คนยังไง · ใช้กติกา branch แบบไหน
+ตัดสินแล้ว: ใช้ PostgreSQL ([ADR-005](docs/DECISIONS.md#adr-005--เลือก-dbms)) · แบ่งงาน 7 คน → [`docs/TEAM_AND_WORKFLOW.md`](docs/TEAM_AND_WORKFLOW.md)
+
+ยังไม่ได้ตัดสิน: ภาษาของ frontend และ backend ([ADR-009](docs/DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป)) · ใช้กติกา branch แบบไหน
 
 ---
 
