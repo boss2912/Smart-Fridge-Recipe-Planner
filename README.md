@@ -5,19 +5,19 @@
   <p>ระบบตู้เย็นอัจฉริยะและแนะนำเมนูอาหาร · Smart fridge &amp; recipe planner database</p>
   <p><strong>310-2309 Database Systems · Mini-DB Group Project · CDTI</strong></p>
 
-  <img src="https://img.shields.io/badge/stage-1%20Proposal-yellow" alt="Stage 1 Proposal">
+  <img src="https://img.shields.io/badge/stage-1%20Proposal%20done-brightgreen" alt="Stage 1 Proposal done">
   <img src="https://img.shields.io/badge/DBMS-TBD-lightgrey" alt="DBMS TBD">
 </div>
 
 ---
 
-## 📌 สถานะปัจจุบัน (11 พ.ย. 2026)
+## 📌 สถานะปัจจุบัน (13 พ.ย. 2026)
 
-> **อยู่ขั้นที่ 1 Proposal** — ร่างข้อความแบบฟอร์มของหัวข้ออันดับ 1 เสร็จแล้ว ยังไม่ได้ส่ง (ดู [`docs/ROADMAP.md`](docs/ROADMAP.md))
+> **ขั้นที่ 1 Proposal ส่งแล้ว** ใช้หัวข้ออันดับ 1 — ขั้นต่อไปคือขั้น 2 ER Diagram & Relational Schema (ดู [`docs/ROADMAP.md`](docs/ROADMAP.md))
 
 | ขั้น | งานที่ต้องส่ง (Lecture 1 หน้า 11) | สถานะ |
 |---|---|---|
-| 1 | Project Proposal (Topic & Idea) | 🟡 ร่างแล้ว ยังไม่ส่ง → [`docs/proposal.md`](docs/proposal.md) |
+| 1 | Project Proposal (Topic & Idea) | ✅ ส่งแล้ว → [`docs/proposal.md`](docs/proposal.md) |
 | 2 | ER Diagram & Relational Schema | ⬜ ยังไม่เริ่ม → [`design/`](design/) |
 | 3 | SQL Implementation Script | ⬜ ยังไม่เริ่ม · รอเลือก DBMS → [`database/`](database/) |
 | 4 | Final Report & Presentation | ⬜ ยังไม่เริ่ม → [`report/`](report/) |
