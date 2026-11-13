@@ -1,6 +1,6 @@
 # database/ — SQL Implementation Script
 
-👤 SQL สร้างตาราง + ข้อมูลตัวอย่าง: เจตน์ · SQL query ตามกฎของระบบ: ภูมิ · แบงค์ · บอส · ภีม — ดู [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
+👤 SQL สร้างตาราง + ข้อมูลตัวอย่าง + query ของตารางตัวเอง: ทุกคน คนละ 1 เรื่อง · รวมไฟล์และตรวจทั้งชุด: เจตน์ ([ADR-018](../docs/DECISIONS.md#adr-018--ทุกคนเขียน-sql-ตารางของตัวเองคนละ-1-เรื่อง)) · SQL query ตามกฎของระบบ: ภูมิ · แบงค์ · บอส · ภีม — ดู [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
 
 > ⬜ **ขั้น 3 ยังไม่เริ่ม** — เริ่มรอบที่ 5 (16 ธ.ค.) หลัง Relational Schema เสร็จ · DBMS คือ **PostgreSQL** ([ADR-005](../docs/DECISIONS.md#adr-005--เลือก-dbms))
 
@@ -16,6 +16,8 @@ database/
 ├── seeds/     ข้อมูลตัวอย่าง
 └── queries/   query ที่ระบบต้องทำ ไฟล์ละเรื่อง พร้อมคำอธิบาย
 ```
+
+แต่ละคนมีไฟล์ของเรื่องตัวเองในทั้ง 3 โฟลเดอร์ ลำดับรันไฟล์เจตน์เป็นคนกำหนด
 
 ## query ที่ต้องมี
 
