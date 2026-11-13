@@ -1,0 +1,21 @@
+# Smart Fridge - Conda environment (dev on one machine)
+#
+# Create:   conda env create -f environment.yml
+# Activate: conda activate smartfridge
+# Update:   conda env update -f environment.yml --prune
+# Remove:   conda env remove -n smartfridge
+#
+# Python comes from conda. Every library comes from pip using
+# backend/requirements.txt, so conda and venv get the same locked versions.
+# See INSTALL.md
+name: smartfridge
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.14
+  - pip
+  - pip:
+      - -r backend/requirements.txt

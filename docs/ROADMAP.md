@@ -61,7 +61,7 @@ Phase 3 มี Consultation กับ Final Presentation (หน้า 10) · �
 
 เริ่มพร้อมขั้น 2 แล้วทำคู่กันไป ([ADR-008](DECISIONS.md#adr-008--ทำเป็นเว็บแอปที่ใช้งานได้จริง)) · งานอยู่ใน [`../nginx/`](../nginx/) · [`../frontend/`](../frontend/) · [`../backend/`](../backend/)
 
-- [ ] เขียนวิธีติดตั้งและรันในเครื่องตัวเอง (Python + PostgreSQL) ([ADR-009](DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป))
+- [x] เขียนวิธีติดตั้งและรันในเครื่องตัวเอง (Python + PostgreSQL) ([ADR-009](DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป)) → [`../INSTALL.md`](../INSTALL.md)
 - [ ] ตกลงว่าแต่ละหน้าได้ข้อมูลอะไรจาก Flask และส่งอะไรกลับ ([จุดที่ต้องคุยกันก่อนลงมือ](TEAM_AND_WORKFLOW.md#จุดที่ต้องคุยกันก่อนลงมือ))
 - [ ] Nginx · frontend · backend ตาม[ตารางใน README](../README.md#แต่ละส่วนต้องมีอะไร)
 - [ ] backend ต่อ database (PostgreSQL · [ADR-005](DECISIONS.md#adr-005--เลือก-dbms))
