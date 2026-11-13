@@ -68,7 +68,7 @@ Phase 3  Mini-Project
 
 - เลือกหัวข้อที่สนใจ 3 หัวข้อ (*Pick 3 potential domains you are interested in.*)
 - ตัวอย่างหัวข้อที่อาจารย์ยก: Cinema Booking, Gym Membership, Online Clothing Store, Parking Management
-- กำหนดส่ง: *"Submit your top 3 choices by the end of today's class +1."* — ยังไม่ชัดว่านับจากคาบไหน ดูหัวข้อ 5
+- กำหนดส่ง: *"Submit your top 3 choices by the end of today's class +1."* — กลุ่มส่งแล้ว
 
 **แบบฟอร์มนำเสนอโครงงาน mini-DB group project เวอร์ชัน 10 พ.ย. 69** (Google Form)
 
@@ -92,7 +92,7 @@ Phase 3  Mini-Project
 ### 2.6 ขั้นที่ 3 — SQL Implementation Script
 
 - เนื้อหาที่ต้องใช้: SQL DDL, DML, Advanced Queries & Join (หน้า 10)
-- DBMS: หน้า 9 ยกตัวอย่าง MySQL, PostgreSQL, Oracle, SQL Server แต่ไม่ได้บอกว่าโครงงานต้องใช้ตัวไหน กลุ่มจึงยังไม่เลือก ดู [ADR-005](DECISIONS.md#adr-005--เลือก-dbms)
+- DBMS: หน้า 9 ยกตัวอย่าง MySQL, PostgreSQL, Oracle, SQL Server แต่ไม่ได้บอกว่าโครงงานต้องใช้ตัวไหน กลุ่มเลือกเองได้ ยังไม่ได้เลือก ดู [ADR-005](DECISIONS.md#adr-005--เลือก-dbms)
 
 ### 2.7 ขั้นที่ 4 — Final Report & Presentation
 
@@ -140,8 +140,6 @@ Phase 3  Mini-Project
 
 | เรื่อง | ที่รู้ตอนนี้ |
 |---|---|
-| กำหนดส่ง Proposal | หน้า 12 เขียนแค่ "by the end of today's class +1" ไม่บอกว่านับจากคาบไหน และ +1 คือ 1 วันหรือ 1 คาบ |
 | คะแนน 20% แบ่งให้แต่ละขั้นเท่าไร | ไม่มีในสไลด์ |
-| กำหนดส่งขั้น 2–4 | ไม่มีในสไลด์ |
-| ต้องใช้ DBMS ตัวไหน | หน้า 9 ยกตัวอย่าง 4 ตัว แต่ไม่ได้กำหนด |
+| วันนำเสนอ | ไม่มีส่งงานระหว่างทาง ส่งทั้งหมดวันนำเสนอ · โครงงานต้องเสร็จภายใน 2 เดือน |
 | รูปแบบรายงานและเวลานำเสนอ | ไม่มีในสไลด์ |
