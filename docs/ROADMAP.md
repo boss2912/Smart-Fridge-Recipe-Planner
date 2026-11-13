@@ -91,7 +91,7 @@ Phase 3 มี Consultation กับ Final Presentation (หน้า 10) · �
 3. ✅ ใครรับงานไหนใน 9 งาน — [`TEAM_AND_WORKFLOW.md`](TEAM_AND_WORKFLOW.md)
 4. ✅ ไฟล์ ER: `.drawio` + `.drawio.png` แก้ทีละคน — [ADR-013](DECISIONS.md#adr-013--ไฟล์-er-เก็บทั้ง-drawio-และ-drawiopng)
 5. ✅ รายงานกับสไลด์ใช้ Word — [`../report/`](../report/)
-6. ⬜ "ใกล้หมดอายุ" กี่วัน — [`../database/`](../database/)
+6. ✅ "ใกล้หมดอายุ" คือเหลือไม่เกิน 3 วัน — [`../database/`](../database/)
 7. ℹ️ กติกา branch: ตั้งป้องกัน main กับ develop แล้ว แจ้งทีมในประชุมครั้งที่ 1 (วาระ 5) — [`../CONTRIBUTING.md`](../CONTRIBUTING.md)
 
 ### ทำไมเรียงแบบนี้
