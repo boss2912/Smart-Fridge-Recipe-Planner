@@ -153,7 +153,7 @@ conda env remove -n smartfridge                  # ลบ env ทิ้ง (พ�
 
 ## 6. ติดตั้ง PostgreSQL 18
 
-ตอนนี้ยังไม่ต้องสร้าง database · Flask ยังไม่ต่อ PostgreSQL จนกว่า ER กับ schema จะเสร็จ (ROADMAP รอบ 2–5) · ลงไว้ก่อนแล้วเช็คว่า `psql` ใช้ได้
+ตอนนี้ยังไม่ต้องสร้าง database · Flask ยังไม่ต่อ PostgreSQL จนกว่า ER กับ schema จะเสร็จ (ต่อจริงรอบ 5 ตาม ROADMAP) · ลงไว้ก่อนแล้วเช็คว่า `psql` ใช้ได้
 
 | ระบบ | วิธีติดตั้ง |
 |---|---|
