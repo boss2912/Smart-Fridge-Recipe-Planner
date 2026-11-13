@@ -13,6 +13,8 @@
 - Phase 3 ของวิชามี Consultation กับ Final Presentation (Lecture 1 หน้า 10)
 - นำเสนอ 15–20 นาที · คะแนนโครงงาน 20% แบ่งเป็นนำเสนอ 10 งาน 10 ([`COURSE_REQUIREMENTS.md`](../docs/COURSE_REQUIREMENTS.md#5-ยังไม่รู้--ต้องถามอาจารย์))
 - รายงานไม่มีแบบบังคับ กลุ่มกำหนดหัวข้อเอง · ใช้โครงรายงานวิชา 311-3303 Embedded System Design เป็นต้นแบบ แล้วปรับให้เข้ากับงานฐานข้อมูล
+  - ต้นแบบ 2 ฉบับของบอส: `Lab_Report_ADC_SAR_Program13-1.pdf` · `Lab_Report_DoubleDabble_7Seg.pdf`
+  - ⚠️ ต้นแบบยังไม่ถูก 100% ต้องสืบค้นเพิ่มก่อนร่างรายงานรอบ 8 → [#14](https://github.com/boss2912/Smart-Fridge-Recipe-Planner/issues/14)
 
 ## จะมีอะไรในโฟลเดอร์นี้
 
