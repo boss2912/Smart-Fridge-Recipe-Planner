@@ -1,8 +1,8 @@
 # design/ — ER Diagram + Relational Schema
 
-👤 ยังไม่ได้ตกลงว่าใครรับ · งานในโฟลเดอร์นี้: ER Diagram · Relational Schema + Normalization — ดู [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
+👤 ER Diagram: ภูมิ · แบงค์ · บอส · ภีม · Relational Schema + Normalization: ไอน์ · กก — ดู [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
 
-> ⬜ **ขั้น 2 ยังไม่เริ่ม** — เริ่มเมื่ออาจารย์ยืนยันหัวข้อ
+> 🟡 **ขั้น 2 เริ่มแล้ว** — มี [กฎของระบบ](business-rules.md) ฉบับร่าง · ER เริ่มรอบที่ 2 (25 พ.ย.)
 
 ## หน้าที่
 
@@ -12,23 +12,36 @@
 
 ```text
 design/
-├── business-rules.md       กฎของระบบ เขียนแบบตัวอย่างร้านเสื้อผ้า (หน้า 28–31)
-├── er-diagram.drawio.png   ไฟล์ draw.io (หน้า 13) ที่เป็นรูป PNG ในตัว เปิดดูบน GitHub ได้ และเปิดแก้ต่อใน draw.io ได้
+├── business-rules.md       ✅ กฎของระบบ เขียนแบบตัวอย่างร้านเสื้อผ้า (หน้า 28–31)
+├── er-diagram.drawio       ไฟล์ต้นฉบับ draw.io (หน้า 13)
+├── er-diagram.drawio.png   รูปของไฟล์ข้างบน เปิดดูบน GitHub ได้
 └── relational-schema.md    ตาราง คอลัมน์ PK / FK และขั้นตอน Normalization
 ```
+
+เก็บไฟล์ ER ทั้ง 2 แบบตาม [ADR-013](../docs/DECISIONS.md#adr-013--ไฟล์-er-เก็บทั้ง-drawio-และ-drawiopng)
+
+## วาด ER แบบไหน
+
+แบบเดียวกับตัวอย่างของวิชาสัปดาห์ที่ 1
+
+- entity เป็นตาราง แถวบนสุดคือชื่อ entity แต่ละแถวข้างล่างคือ attribute มีช่อง PK / FK อยู่หน้าชื่อ
+- ชื่อ entity และ attribute เป็นภาษาอังกฤษ ตัวเล็ก คั่นด้วย `_` เช่น `household_id`
+- เส้นความสัมพันธ์แบบ crow's foot เช่น หนึ่งบ้านมีล็อตได้ศูนย์ถึงหลายล็อต
 
 ## ต้องครอบอะไรบ้าง
 
 - ข้อมูลหลัก 8 อย่างใน [`../docs/proposal.md`](../docs/proposal.md) ข้อ 6
-- กฎใน [`../docs/DECISIONS.md`](../docs/DECISIONS.md): หักตามสูตร (ADR-001) · บันทึกการทิ้ง (ADR-003) · หน่วยมาตรฐานเดียว (ADR-004)
+- [กฎของระบบ](business-rules.md) ทุกข้อ
+- กฎใน [`../docs/DECISIONS.md`](../docs/DECISIONS.md): หักตามสูตร (ADR-001) · บันทึกการทิ้ง (ADR-003) · หน่วยมาตรฐานเดียว (ADR-004) · บัญชีบ้าน (ADR-010) · ของติดบ้าน (ADR-011) · บันทึกหักล็อต (ADR-012)
 - Data Integrity & Constraints แบบตัวอย่างหน้า 31: PK ทุกตาราง · FK · NOT NULL · UNIQUE
 
 ## บันทึกและแก้ไฟล์ ER
 
-- บันทึก: ใน draw.io เลือก File → Export as → PNG… ติ๊ก **Include a copy of my diagram** แล้วตั้งชื่อ `er-diagram.drawio.png`
-- เปิดแก้: ลากไฟล์ `er-diagram.drawio.png` ลงหน้า draw.io จะได้รูปทรงที่แก้ต่อได้ ไม่ใช่รูปภาพ
+- เปิดแก้: เปิด `er-diagram.drawio` ใน draw.io
+- บันทึก: File → Save เป็น `er-diagram.drawio` แล้ว File → Export as → PNG… ติ๊ก **Include a copy of my diagram** ตั้งชื่อ `er-diagram.drawio.png` ทับไฟล์เดิม
+- commit ทั้ง 2 ไฟล์ใน PR เดียวกันเสมอ รูปบน GitHub จะได้ตรงกับไฟล์ต้นฉบับ
 
-> ⚠️ **git รวมงานในไฟล์ `.drawio.png` ให้ไม่ได้** ถ้า 2 คนแก้ไฟล์นี้คนละ branch แล้ว merge git จะเหลือไว้ฉบับเดียวและแจ้ง conflict งานของอีกคนต้องไปวาดใหม่เอง
+> ⚠️ **git รวมงานในไฟล์ ER ให้ไม่ได้** `.drawio.png` เป็นรูป git รวมไม่ได้เลย ส่วน `.drawio` รวมได้แค่บางกรณี ถ้า 2 คนแก้คนละ branch แล้ว merge อาจเหลือไว้ฉบับเดียว งานของอีกคนต้องไปวาดใหม่เอง
 >
 > **กฎ: แก้ทีละคน** — ก่อนแก้ให้ pull develop ล่าสุดและบอกในกลุ่มว่ากำลังแก้ คนถัดไปเริ่มแก้ได้เมื่อ PR ของคนก่อน merge เข้า develop แล้ว
 

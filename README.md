@@ -6,7 +6,7 @@
   <p><strong>310-2309 Database Systems · Mini-DB Group Project · CDTI</strong></p>
 
   <img src="https://img.shields.io/badge/stage-1%20Proposal%20done-brightgreen" alt="Stage 1 Proposal done">
-  <img src="https://img.shields.io/badge/DBMS-TBD-lightgrey" alt="DBMS TBD">
+  <img src="https://img.shields.io/badge/DBMS-PostgreSQL-336791" alt="DBMS PostgreSQL">
 </div>
 
 ---
@@ -18,8 +18,8 @@
 | ขั้น | งานที่ต้องส่ง (Lecture 1 หน้า 11) | สถานะ |
 |---|---|---|
 | 1 | Project Proposal (Topic & Idea) | ✅ ส่งแล้ว → [`docs/proposal.md`](docs/proposal.md) |
-| 2 | ER Diagram & Relational Schema | ⬜ ยังไม่เริ่ม → [`design/`](design/) |
-| 3 | SQL Implementation Script | ⬜ ยังไม่เริ่ม · รอเลือก DBMS → [`database/`](database/) |
+| 2 | ER Diagram & Relational Schema | 🟡 ร่างกฎของระบบแล้ว · ER เริ่มรอบ 2 → [`design/`](design/) |
+| 3 | SQL Implementation Script | ⬜ ยังไม่เริ่ม · ใช้ PostgreSQL → [`database/`](database/) |
 | 4 | Final Report & Presentation | ⬜ ยังไม่เริ่ม → [`report/`](report/) |
 
 ยังไม่ได้ตัดสิน: ใช้ DBMS ตัวไหน (SQLite หรือ MySQL) · แบ่งงาน 7 คนยังไง · ใช้กติกา branch แบบไหน
@@ -82,7 +82,7 @@
      └─────────────────┘     └────────┬────────┘
                                       ▼
                              ┌─────────────────┐
-                             │    database     │  DBMS (ยังไม่เลือก)
+                             │    database     │  PostgreSQL
                              └─────────────────┘
 ```
 
@@ -93,7 +93,7 @@
 | **Nginx** | ทางเข้าเดียวของระบบ: ส่งไฟล์หน้าเว็บของ frontend ให้เบราว์เซอร์ · ส่งต่อคำขอ `/api/` ไปที่ backend |
 | **frontend** | หน้าของสมาชิกในครัวเรือน: บันทึกของที่ซื้อเข้าตู้ · บันทึกว่าทำเมนูไหน · บันทึกของที่ทิ้ง · ดูของใกล้หมดอายุ · ดูเมนูที่ทำได้<br>หน้าของผู้ดูแลระบบ: เพิ่มและแก้ไขรายการวัตถุดิบกับสูตรอาหารกลาง |
 | **backend** | API ที่หน้าเว็บเรียกใช้ · ล็อกอิน · แยกสิทธิ์ 2 กลุ่ม: วัตถุดิบกับสูตรกลางแก้ได้เฉพาะผู้ดูแลระบบ และสมาชิกทิ้งได้เฉพาะของในตู้บ้านตัวเอง ([ADR-003](docs/DECISIONS.md#adr-003--ต้องมีการบันทึกการทิ้งของ)) |
-| **database** | ข้อมูลหลัก 8 อย่าง · PK / FK / NOT NULL / UNIQUE ตามตัวอย่างหน้า 31 · query 4 เรื่องใน [`database/`](database/) ซึ่งทำอาหารกับทิ้งของต้องอยู่ในธุรกรรมเดียว ([ADR-001](docs/DECISIONS.md#adr-001--ทำอาหารแล้วระบบหักวัตถุดิบตามสูตร) · [ADR-003](docs/DECISIONS.md#adr-003--ต้องมีการบันทึกการทิ้งของ)) · DBMS ยังไม่เลือก ([ADR-005](docs/DECISIONS.md#adr-005--เลือก-dbms)) |
+| **database** | ข้อมูลหลัก 8 อย่าง · PK / FK / NOT NULL / UNIQUE ตามตัวอย่างหน้า 31 · query 4 เรื่องใน [`database/`](database/) ซึ่งทำอาหารกับทิ้งของต้องอยู่ในธุรกรรมเดียว ([ADR-001](docs/DECISIONS.md#adr-001--ทำอาหารแล้วระบบหักวัตถุดิบตามสูตร) · [ADR-003](docs/DECISIONS.md#adr-003--ต้องมีการบันทึกการทิ้งของ)) · ใช้ PostgreSQL ([ADR-005](docs/DECISIONS.md#adr-005--เลือก-dbms)) |
 
 > งานส่ง 4 ชิ้นของอาจารย์ (Lecture 1 หน้า 11) ไม่มีหน้าเว็บหรือ API ส่วน Nginx · frontend · backend จึงเป็นงานเพิ่มนอกงานส่ง เริ่มพร้อมขั้น 2 ([ADR-008](docs/DECISIONS.md#adr-008--ทำเป็นเว็บแอปที่ใช้งานได้จริง))
 
