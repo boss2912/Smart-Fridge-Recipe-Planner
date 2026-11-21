@@ -2,7 +2,7 @@
 
 👤 ER Diagram: ภูมิ · แบงค์ · บอส · ภีม · Relational Schema + Normalization: ไอน์ · กก — ดู [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
 
-> 🟡 **ขั้น 2 เริ่มแล้ว** — [กฎของระบบ](business-rules.md) เสร็จแล้ว · วาด [ER Diagram](er-diagram.drawio.png) ครบข้อมูลหลัก 8 อย่าง (10 entities · 12 เส้นความสัมพันธ์) แล้ว
+> 🟡 **ขั้น 2 เริ่มแล้ว** — [กฎของระบบ](business-rules.md) เสร็จแล้ว · วาด [ER Diagram](er-diagram.drawio.png) ครบข้อมูลหลัก 8 อย่าง (11 entities · 13 เส้นความสัมพันธ์) แล้ว
 
 ## หน้าที่
 
@@ -13,7 +13,7 @@
 ```text
 design/
 ├── business-rules.md       ✅ กฎของระบบ เขียนแบบตัวอย่างร้านเสื้อผ้า (หน้า 28–31)
-├── er-diagram.drawio       ✅ ไฟล์ต้นฉบับ draw.io (หน้า 13) ครบ 10 entities
+├── er-diagram.drawio       ✅ ไฟล์ต้นฉบับ draw.io (หน้า 13) ครบ 11 entities
 ├── er-diagram.drawio.png   ✅ รูปของไฟล์ข้างบน เปิดดูบน GitHub ได้
 └── relational-schema.md    ⬜ ตาราง คอลัมน์ PK / FK และขั้นตอน Normalization
 ```
