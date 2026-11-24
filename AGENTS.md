@@ -4,14 +4,17 @@ Group project for course 310-2309 Database Systems: a smart fridge & recipe plan
 Deliverables are a database design + SQL; a Flask web app (Nginx · frontend · backend) is built alongside.
 Docs are in Thai. Answer the user in the language they write in.
 
-## Current status — one place only
+## Current status
 
-- **`docs/ROADMAP.md` is the single source of status** (4 stages, 9-round calendar, decided items).
+- **`docs/ROADMAP.md` is the main source of status** (4 stages, 9-round calendar, decided items).
+  Each folder README also has one status line (the `> ...` line near the top). If they disagree, ROADMAP wins.
 - Do not trust it blindly: check freshness with `git log -1 --format=%cs -- docs/ROADMAP.md`
   and compare with `git log --oneline -10 origin/develop` and `gh issue list --state open`.
   If they disagree, tell the user before acting.
-- When a task finishes a ROADMAP item, update the checkbox in `docs/ROADMAP.md` in the same PR.
-  Do not add status tables anywhere else.
+- When a task finishes a ROADMAP item, update the checkbox in `docs/ROADMAP.md` in the same PR,
+  **and** the status line of the matching folder README in the same PR, so the two never disagree:
+  stage 2 → `design/` · stage 3 → `database/` · stage 4 → `report/` · web app → `nginx/` `frontend/` `backend/`.
+  Do not add status tables anywhere else (the root `README.md` only links to ROADMAP).
 
 ## Keep ROADMAP and the project board in sync — the AI does this, every time
 
@@ -22,7 +25,7 @@ New issues/PRs are added to the board automatically but with **empty Status** �
 | Event | ROADMAP | Board |
 |---|---|---|
 | Issue created | First commit on the issue's branch appends ` (#N)` to the matching ROADMAP item. If no item matches (e.g. a docs chore), leave ROADMAP alone. | Set issue Status (`รายการงาน`, or `รอบนี้`/`กำลังทำ` if work starts now) |
-| PR opened | PR includes the ROADMAP checkbox change if it finishes an item | PR → `รอ review`, its issue → `กำลังทำ` |
+| PR opened | PR includes the ROADMAP checkbox change + folder README status line if it finishes an item | PR → `รอ review`, its issue → `กำลังทำ` |
 | PR merged into `develop` | already in the PR | Close the issue yourself (PRs into `develop` do not auto-close) with comment `เสร็จใน PR #N`; issue + PR → `เสร็จ` |
 
 ROADMAP edits must go through a PR (develop is protected) — never a separate PR just for ROADMAP.

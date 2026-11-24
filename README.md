@@ -12,7 +12,7 @@
 
 ## 📌 สถานะปัจจุบัน
 
-> สถานะของแต่ละขั้นอยู่ที่ [`docs/ROADMAP.md`](docs/ROADMAP.md) ที่เดียว — งานเสร็จให้ติ๊กที่นั่น ไม่ต้องแก้ไฟล์นี้
+> สถานะของแต่ละขั้นอยู่ที่ [`docs/ROADMAP.md`](docs/ROADMAP.md) — งานเสร็จให้ติ๊กที่นั่นพร้อมแก้บรรทัดสถานะใน README ของโฟลเดอร์นั้น ไม่ต้องแก้ไฟล์นี้
 
 ตัดสินแล้ว: ใช้ PostgreSQL ([ADR-005](docs/DECISIONS.md#adr-005--เลือก-dbms)) · แบ่งงาน 7 คน → [`docs/TEAM_AND_WORKFLOW.md`](docs/TEAM_AND_WORKFLOW.md) · เว็บใช้ Python + Flask และวิธีรัน ([ADR-009](docs/DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป)) · กติกา branch → [`CONTRIBUTING.md`](CONTRIBUTING.md)
 

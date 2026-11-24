@@ -2,7 +2,7 @@
 
 👤 ER Diagram: ภูมิ · แบงค์ · บอส · ภีม · Relational Schema + Normalization: ไอน์ · กก — ดู [`../docs/TEAM_AND_WORKFLOW.md`](../docs/TEAM_AND_WORKFLOW.md)
 
-> 🟡 **ขั้น 2 เริ่มแล้ว** — [กฎของระบบ](business-rules.md) เสร็จแล้ว · วาด [ER Diagram](er-diagram.drawio.png) ครบข้อมูลหลัก 8 อย่าง (10 entities · 12 เส้นความสัมพันธ์) แล้ว
+> 🟡 **ขั้น 2 เริ่มแล้ว** — [กฎของระบบ](business-rules.md) เสร็จแล้ว · วาด [ER Diagram](er-diagram.drawio.png) ครบข้อมูลหลัก 8 อย่าง (10 entities · 12 เส้นความสัมพันธ์) แล้ว · เหลือตรวจทั้งรูปเทียบกฎ #20 (รอบ 2)
 
 ## หน้าที่
 
