@@ -157,7 +157,7 @@ conda env remove -n smartfridge                  # ลบ env ทิ้ง (พ�
 
 | ระบบ | วิธีติดตั้ง |
 |---|---|
-| **Windows** | `winget install PostgreSQL.PostgreSQL.18` หรือโหลด installer จาก [postgresql.org](https://www.postgresql.org/download/windows/) · ตอนติดตั้งจะให้ตั้งรหัสผ่านของ user `postgres` **จดไว้** · แล้วเพิ่ม `C:\Program Files\PostgreSQL\18\bin` เข้า PATH |
+| **Windows** | `winget install PostgreSQL.PostgreSQL.18 --interactive` หรือโหลด installer จาก [postgresql.org](https://www.postgresql.org/download/windows/) · ต้องใส่ `--interactive` ถ้าไม่ใส่ winget จะลงแบบไม่เปิดหน้าจอ จึงไม่มีหน้าให้ตั้งรหัสผ่าน · ตอนติดตั้งจะให้ตั้งรหัสผ่านของ user `postgres` **จดไว้** · แล้วเพิ่ม `C:\Program Files\PostgreSQL\18\bin` เข้า PATH |
 | **macOS** | `brew install postgresql@18` แล้ว `brew services start postgresql@18` · ตัวนี้ไม่ลิงก์เข้า PATH เอง ต้องเพิ่ม `$(brew --prefix)/opt/postgresql@18/bin` เข้า PATH |
 | **Linux** | ใช้ repo ของ PostgreSQL ตาม [postgresql.org/download/linux](https://www.postgresql.org/download/linux/) แล้วลง `postgresql-18` |
 
