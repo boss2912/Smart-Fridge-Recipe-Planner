@@ -12,7 +12,7 @@ Proposal   →   ER Diagram +   →    SQL           →    Final Report +
                └ Phase 1 ┘         └ Phase 2 ┘        └ Phase 3 ┘
 
                Web app: Nginx · frontend · backend ────────────────►
-                 ⬜
+                 🟡
 ```
 
 | สัญลักษณ์ | ความหมาย |
@@ -37,7 +37,7 @@ Proposal   →   ER Diagram +   →    SQL           →    Final Report +
 หัวข้อยืนยันแล้ว เริ่มตาม[ปฏิทิน 9 รอบ](#-ปฏิทิน-9-รอบ-พุธ--อังคาร) · วาดด้วย draw.io (หน้า 13) · งานอยู่ใน [`../design/`](../design/)
 
 - [x] เขียนกฎของระบบ (business rules) แบบตัวอย่างร้านเสื้อผ้า หน้า 28–31 → [`../design/business-rules.md`](../design/business-rules.md)
-- [ ] ER Diagram ที่ครอบข้อมูลหลักครบ 8 อย่าง
+- [ ] ER Diagram ที่ครอบข้อมูลหลักครบ 8 อย่าง · ร่างแรก merge แล้วใน PR #24 · เหลือ #20 (รอบ 2)
 - [ ] แปลง ER เป็น relational schema พร้อม PK / FK
 - [ ] Normalization
 
@@ -60,11 +60,12 @@ Phase 3 มี Consultation กับ Final Presentation (หน้า 10) · �
 - [ ] รายงาน
 - [ ] สไลด์นำเสนอ
 
-## ⬜ เว็บแอป · Nginx · frontend · backend
+## 🟡 เว็บแอป · Nginx · frontend · backend
 
 เริ่มพร้อมขั้น 2 แล้วทำคู่กันไป ([ADR-008](DECISIONS.md#adr-008--ทำเป็นเว็บแอปที่ใช้งานได้จริง)) · งานอยู่ใน [`../nginx/`](../nginx/) · [`../frontend/`](../frontend/) · [`../backend/`](../backend/)
 
 - [x] เขียนวิธีติดตั้งและรันในเครื่องตัวเอง (Python + PostgreSQL) ([ADR-009](DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป)) → [`../INSTALL.md`](../INSTALL.md)
+- [x] โครง Flask + template (#11)
 - [ ] ตกลงว่าแต่ละหน้าได้ข้อมูลอะไรจาก Flask และส่งอะไรกลับ ([จุดที่ต้องคุยกันก่อนลงมือ](TEAM_AND_WORKFLOW.md#จุดที่ต้องคุยกันก่อนลงมือ))
 - [ ] Nginx · frontend · backend ตาม[ตารางใน README](../README.md#แต่ละส่วนต้องมีอะไร)
 - [ ] backend ต่อ database (PostgreSQL · [ADR-005](DECISIONS.md#adr-005--เลือก-dbms))

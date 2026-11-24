@@ -5,22 +5,14 @@
   <p>ระบบตู้เย็นอัจฉริยะและแนะนำเมนูอาหาร · Smart fridge &amp; recipe planner database</p>
   <p><strong>310-2309 Database Systems · Mini-DB Group Project · CDTI</strong></p>
 
-  <img src="https://img.shields.io/badge/stage-1%20Proposal%20done-brightgreen" alt="Stage 1 Proposal done">
   <img src="https://img.shields.io/badge/DBMS-PostgreSQL-336791" alt="DBMS PostgreSQL">
 </div>
 
 ---
 
-## 📌 สถานะปัจจุบัน (13 พ.ย. 2026)
+## 📌 สถานะปัจจุบัน
 
-> **ขั้นที่ 1 Proposal ส่งแล้ว** ใช้หัวข้ออันดับ 1 — ขั้นต่อไปคือขั้น 2 ER Diagram & Relational Schema (ดู [`docs/ROADMAP.md`](docs/ROADMAP.md))
-
-| ขั้น | งานที่ต้องส่ง (Lecture 1 หน้า 11) | สถานะ |
-|---|---|---|
-| 1 | Project Proposal (Topic & Idea) | ✅ ส่งแล้ว → [`docs/proposal.md`](docs/proposal.md) |
-| 2 | ER Diagram & Relational Schema | 🟡 กฎของระบบเสร็จแล้ว · ER เริ่มรอบ 1 (18 พ.ย.) → [`design/`](design/) |
-| 3 | SQL Implementation Script | ⬜ ยังไม่เริ่ม · ใช้ PostgreSQL → [`database/`](database/) |
-| 4 | Final Report & Presentation | ⬜ ยังไม่เริ่ม → [`report/`](report/) |
+> สถานะของแต่ละขั้นอยู่ที่ [`docs/ROADMAP.md`](docs/ROADMAP.md) — งานเสร็จให้ติ๊กที่นั่นพร้อมแก้บรรทัดสถานะใน README ของโฟลเดอร์นั้น ไม่ต้องแก้ไฟล์นี้
 
 ตัดสินแล้ว: ใช้ PostgreSQL ([ADR-005](docs/DECISIONS.md#adr-005--เลือก-dbms)) · แบ่งงาน 7 คน → [`docs/TEAM_AND_WORKFLOW.md`](docs/TEAM_AND_WORKFLOW.md) · เว็บใช้ Python + Flask และวิธีรัน ([ADR-009](docs/DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป)) · กติกา branch → [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
@@ -133,7 +125,9 @@ Smart-Fridge-Recipe-Planner/
 ├── nginx/      ส่วน Nginx · ทางเข้าเดียว
 ├── frontend/   ส่วน frontend · หน้าเว็บ
 ├── backend/    ส่วน backend · Flask + ล็อกอิน
-└── .github/    แม่แบบ PR + issue
+├── .github/    แม่แบบ PR + issue
+├── AGENTS.md   คำสั่งสำหรับ AI (ภาษาอังกฤษ) · บอกว่าอ่านไฟล์ไหนเมื่อไร
+└── CLAUDE.md   ชี้ไปที่ AGENTS.md ให้ Claude โหลดตาม
 ```
 
 **ทุกโฟลเดอร์ยกเว้น `docs/` กับ `.github/` มี `README.md` ของตัวเอง** บอกว่าใส่อะไร ใครดูแล และอ้างอิงสไลด์หน้าไหน
