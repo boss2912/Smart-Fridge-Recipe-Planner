@@ -13,6 +13,25 @@ Docs are in Thai. Answer the user in the language they write in.
 - When a task finishes a ROADMAP item, update the checkbox in `docs/ROADMAP.md` in the same PR.
   Do not add status tables anywhere else.
 
+## Keep ROADMAP and the project board in sync — the AI does this, every time
+
+Board: https://github.com/users/boss2912/projects/1 (`gh project ... 1 --owner boss2912`).
+Field `Status` options: `รายการงาน` · `รอบนี้` · `กำลังทำ` · `รอ review` · `เสร็จ`.
+New issues/PRs are added to the board automatically but with **empty Status** — always set it.
+
+| Event | ROADMAP | Board |
+|---|---|---|
+| Issue created | First commit on the issue's branch appends ` (#N)` to the matching ROADMAP item. If no item matches (e.g. a docs chore), leave ROADMAP alone. | Set issue Status (`รายการงาน`, or `รอบนี้`/`กำลังทำ` if work starts now) |
+| PR opened | PR includes the ROADMAP checkbox change if it finishes an item | PR → `รอ review`, its issue → `กำลังทำ` |
+| PR merged into `develop` | already in the PR | Close the issue yourself (PRs into `develop` do not auto-close) with comment `เสร็จใน PR #N`; issue + PR → `เสร็จ` |
+
+ROADMAP edits must go through a PR (develop is protected) — never a separate PR just for ROADMAP.
+
+## No AI attribution
+
+Never add AI attribution anywhere on GitHub: no `Co-Authored-By` AI trailer, no "Generated with ..." line,
+no mention of AI in commit messages, PR/issue bodies, comments, or reviews.
+
 ## Read only what the task needs
 
 | Task | Read |
