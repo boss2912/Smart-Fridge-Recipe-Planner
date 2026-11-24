@@ -106,15 +106,17 @@
 
 ## 👥 ทีม (7 คน)
 
-| ชื่อ - นามสกุล | รหัสนักศึกษา |
-|---|---|
-| พงศภัค เทียบพิมพ์ | 6710301006 |
-| พชรพล เสรีกุล | 6710301005 |
-| พีระพัส อัครศรีประไพ | 6710301008 |
-| เจตน์ - | 6710301022 |
-| ภากร กาเงิน | 6710301037 |
-| วิรัชสัณห์ เจนนานาโชค | 6710301047 |
-| คชา สวัสดิพิศาล | 6710301054 |
+| ชื่อ - นามสกุล | ชื่อเล่น | รหัสนักศึกษา | หน้าที่ |
+|---|---|---|---|
+| พงศภัค เทียบพิมพ์ | บอส | 6710301006 | ประสานงาน + Proposal · ER Diagram · SQL query ตามกฎของระบบ · frontend · Nginx |
+| พชรพล เสรีกุล | ภีม | 6710301005 | ER Diagram · SQL query ตามกฎของระบบ · frontend |
+| พีระพัส อัครศรีประไพ | ภูมิ | 6710301008 | ER Diagram · SQL query ตามกฎของระบบ · frontend |
+| เจตน์ - | เจตน์ | 6710301022 | รวมไฟล์ SQL และตรวจทั้งชุด · backend |
+| ภากร กาเงิน | ไอน์ | 6710301037 | Relational Schema + Normalization · backend |
+| วิรัชสัณห์ เจนนานาโชค | แบงค์ | 6710301047 | ER Diagram · SQL query ตามกฎของระบบ · frontend |
+| คชา สวัสดิพิศาล | กก | 6710301054 | Relational Schema + Normalization · backend |
+
+**ทุกคน:** เขียน SQL ตารางของตัวเองคนละ 1 เรื่อง ([ADR-018](docs/DECISIONS.md#adr-018--ทุกคนเขียน-sql-ตารางของตัวเองคนละ-1-เรื่อง)) · เขียนส่วนของตัวเองในรายงาน + สไลด์ · รีวิว PR ของคนอื่น · วันนำเสนอตอบคำถามได้ทุกส่วน
 
 รายละเอียดหน้าที่และจุดที่ต้องคุยกันก่อนลงมือ → [`docs/TEAM_AND_WORKFLOW.md`](docs/TEAM_AND_WORKFLOW.md)
 
@@ -150,6 +152,56 @@ Smart-Fridge-Recipe-Planner/
 | [`docs/DECISIONS.md`](docs/DECISIONS.md) | **ก่อนแก้อะไรที่ดูแปลก** — บันทึกว่าทำไมถึงตัดสินใจแบบนั้น |
 | [`docs/TEAM_AND_WORKFLOW.md`](docs/TEAM_AND_WORKFLOW.md) | แบ่งงาน · จุดที่ต้องตกลงกันก่อนลงมือ |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | ก่อน commit หรือเปิด PR ครั้งแรก |
+| [`INSTALL.md`](INSTALL.md) | ติดตั้ง — Windows · macOS · Linux · Conda · PostgreSQL 18 · แก้ปัญหา |
+
+---
+
+## 🚀 การติดตั้ง
+
+📖 **คู่มือเต็ม → [`INSTALL.md`](INSTALL.md)** (Windows · macOS · Linux · Conda · PostgreSQL 18 · แก้ปัญหา)
+
+**Python 3.14** · ทุกเวอร์ชันล็อกไว้ใน [`backend/requirements.txt`](backend/requirements.txt) — ตรวจด้วย `python -m pytest backend` ต้องได้ 17 passed
+
+### ติดตั้งเร็วสุด (dev บนเครื่องเดียว)
+
+**Windows**
+```powershell
+git clone https://github.com/boss2912/Smart-Fridge-Recipe-Planner.git
+cd Smart-Fridge-Recipe-Planner
+git switch develop
+py -3.14 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install -r backend/requirements.txt
+```
+
+**macOS / Linux**
+```bash
+git clone https://github.com/boss2912/Smart-Fridge-Recipe-Planner.git
+cd Smart-Fridge-Recipe-Planner
+git switch develop
+python3.14 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r backend/requirements.txt
+```
+
+**Conda** (ใช้ได้ทุกระบบ)
+```bash
+git clone https://github.com/boss2912/Smart-Fridge-Recipe-Planner.git
+cd Smart-Fridge-Recipe-Planner
+git switch develop
+conda env create -f environment.yml
+conda activate smartfridge
+```
+
+### รัน
+
+```bash
+flask --app backend/app run --debug
+```
+
+เปิด http://127.0.0.1:5000 · ตอนพัฒนารัน Flask ตรง ไม่ผ่าน Nginx · ยังไม่ต่อ database (รอ ER) แต่ให้ลง PostgreSQL 18 ไว้ก่อนรอบ 2 ตาม[หัวข้อ 6 ของ INSTALL.md](INSTALL.md#6-ติดตั้ง-postgresql-18)
 
 ---
 
