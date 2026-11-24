@@ -11,21 +11,21 @@ Docs are in Thai. Answer the user in the language they write in.
 - Do not trust it blindly: check freshness with `git log -1 --format=%cs -- docs/ROADMAP.md`
   and compare with `git log --oneline -10 origin/develop` and `gh issue list --state open`.
   If they disagree, tell the user before acting.
-- When a task finishes a ROADMAP item, update the checkbox in `docs/ROADMAP.md` in the same PR,
-  **and** the status line of the matching folder README in the same PR, so the two never disagree:
-  stage 2 → `design/` · stage 3 → `database/` · stage 4 → `report/` · web app → `nginx/` `frontend/` `backend/`.
-  Do not add status tables anywhere else (the root `README.md` only links to ROADMAP).
+- **Whenever a ROADMAP item or a stage emoji changes**, update the matching folder README status line in the same PR
+  (ADR-020): stage 2 → `design/` · 3 → `database/` · 4 → `report/` · web app → `nginx/` `frontend/` `backend/`.
+  No status tables elsewhere; root `README.md` only links to ROADMAP.
 
 ## Keep ROADMAP and the project board in sync — the AI does this, every time
 
-Board: https://github.com/users/boss2912/projects/1 (`gh project ... 1 --owner boss2912`).
+Board: https://github.com/users/boss2912/projects/1 · needs `gh auth refresh -s project` once.
+IDs: `gh project field-list 1 --owner boss2912` · items: `gh project item-list 1 --owner boss2912` · set: `gh project item-edit`.
 Field `Status` options: `รายการงาน` · `รอบนี้` · `กำลังทำ` · `รอ review` · `เสร็จ`.
 New issues/PRs are added to the board automatically but with **empty Status** — always set it.
 
 | Event | ROADMAP | Board |
 |---|---|---|
 | Issue created | First commit on the issue's branch appends ` (#N)` to the matching ROADMAP item. If no item matches (e.g. a docs chore), leave ROADMAP alone. | Set issue Status (`รายการงาน`, or `รอบนี้`/`กำลังทำ` if work starts now) |
-| PR opened | PR includes the ROADMAP checkbox change + folder README status line if it finishes an item | PR → `รอ review`, its issue → `กำลังทำ` |
+| PR opened | PR includes any ROADMAP change + the folder README status line | PR → `รอ review`, its issue → `กำลังทำ` |
 | PR merged into `develop` | already in the PR | Close the issue yourself (PRs into `develop` do not auto-close) with comment `เสร็จใน PR #N`; issue + PR → `เสร็จ` |
 
 ROADMAP edits must go through a PR (develop is protected) — never a separate PR just for ROADMAP.
@@ -57,7 +57,7 @@ Large files — do not read whole:
 - `main` and `develop` are protected. Never push to them directly, never force-push.
 - Branch from `origin/develop`, named `<issue number>-<topic>`. PR base must be `develop` (GitHub defaults to `main`).
 - Merge with **merge commit**, not squash. One approval from someone other than the PR author.
-- Commit format: `<type>(<scope>): <summary>` — type `feat|fix|docs|chore`, scope `proposal|design|db|report|nginx|frontend|backend`.
+- Commit format: `<type>(<scope>): <summary>` — type `feat|fix|docs|chore`; scope optional: `proposal|design|db|report|nginx|frontend|backend`.
 - Never commit member emails (repo is public, ADR-007) or `.db` / `.sqlite` files.
 - A decision others might revert → add a new ADR in `docs/DECISIONS.md`; never delete old ADRs, mark them 🔁.
 - Each folder's `README.md` must be updated when its contents change.
