@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="ER-Smart-Fridge" id="smart-fridge-er-v1">
-    <mxGraphModel dx="1100" dy="980" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1000" math="0" shadow="0">
+    <mxGraphModel dx="1100" dy="950" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="980" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -114,76 +114,6 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="household-r5-v" parent="household-r5" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="account_status" vertex="1">
-          <mxGeometry height="30" width="180" x="30" as="geometry">
-            <mxRectangle height="30" width="180" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user_account" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="user_account" vertex="1">
-          <mxGeometry height="180" width="210" x="60" y="640" as="geometry">
-            <mxRectangle height="30" width="90" x="60" y="640" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user_account-r1" parent="user_account" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
-          <mxGeometry height="30" width="210" y="30" as="geometry" />
-        </mxCell>
-        <mxCell id="user_account-r1-k" parent="user_account-r1" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
-          <mxGeometry height="30" width="30" as="geometry">
-            <mxRectangle height="30" width="30" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user_account-r1-v" parent="user_account-r1" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="user_id" vertex="1">
-          <mxGeometry height="30" width="180" x="30" as="geometry">
-            <mxRectangle height="30" width="180" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user_account-r2" parent="user_account" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
-          <mxGeometry height="30" width="210" y="60" as="geometry" />
-        </mxCell>
-        <mxCell id="user_account-r2-k" parent="user_account-r2" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
-          <mxGeometry height="30" width="30" as="geometry">
-            <mxRectangle height="30" width="30" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user_account-r2-v" parent="user_account-r2" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="household_id" vertex="1">
-          <mxGeometry height="30" width="180" x="30" as="geometry">
-            <mxRectangle height="30" width="180" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user_account-r3" parent="user_account" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
-          <mxGeometry height="30" width="210" y="90" as="geometry" />
-        </mxCell>
-        <mxCell id="user_account-r3-k" parent="user_account-r3" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="30" width="30" as="geometry">
-            <mxRectangle height="30" width="30" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user_account-r3-v" parent="user_account-r3" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="email" vertex="1">
-          <mxGeometry height="30" width="180" x="30" as="geometry">
-            <mxRectangle height="30" width="180" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user_account-r4" parent="user_account" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
-          <mxGeometry height="30" width="210" y="120" as="geometry" />
-        </mxCell>
-        <mxCell id="user_account-r4-k" parent="user_account-r4" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="30" width="30" as="geometry">
-            <mxRectangle height="30" width="30" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user_account-r4-v" parent="user_account-r4" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="username" vertex="1">
-          <mxGeometry height="30" width="180" x="30" as="geometry">
-            <mxRectangle height="30" width="180" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user_account-r5" parent="user_account" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
-          <mxGeometry height="30" width="210" y="150" as="geometry" />
-        </mxCell>
-        <mxCell id="user_account-r5-k" parent="user_account-r5" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="30" width="30" as="geometry">
-            <mxRectangle height="30" width="30" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="user_account-r5-v" parent="user_account-r5" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="password_hash" vertex="1">
           <mxGeometry height="30" width="180" x="30" as="geometry">
             <mxRectangle height="30" width="180" as="alternateBounds" />
           </mxGeometry>
@@ -500,8 +430,8 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="cooking" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="cooking" vertex="1">
-          <mxGeometry height="180" width="210" x="410" y="750" as="geometry">
-            <mxRectangle height="30" width="90" x="410" y="750" as="alternateBounds" />
+          <mxGeometry height="180" width="210" x="410" y="730" as="geometry">
+            <mxRectangle height="30" width="90" x="410" y="730" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="cooking-r1" parent="cooking" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
@@ -627,8 +557,8 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="lot_deduction" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="lot_deduction" vertex="1">
-          <mxGeometry height="150" width="210" x="760" y="750" as="geometry">
-            <mxRectangle height="30" width="90" x="760" y="750" as="alternateBounds" />
+          <mxGeometry height="150" width="210" x="760" y="730" as="geometry">
+            <mxRectangle height="30" width="90" x="760" y="730" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="lot_deduction-r1" parent="lot_deduction" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
@@ -683,14 +613,6 @@
             <mxRectangle height="30" width="180" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge-hh-user" edge="1" parent="1" source="household-r1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;labelPadding=0 4;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="user_account-r2">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="355" y="535" />
-              <mxPoint x="355" y="715" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
         <mxCell id="edge-cat-ing" edge="1" parent="1" source="category-r1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;labelPadding=0 4;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="ingredient-r2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -716,7 +638,7 @@
         <mxCell id="edge-hh-rec" edge="1" parent="1" source="household-r1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;labelPadding=0 4;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="recipe-r2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-rec-ri" edge="1" parent="1" source="recipe-r1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;labelPadding=0 4;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="recipe_ingredient-r2">
+        <mxCell id="edge-rec-ri" edge="1" parent="1" source="recipe-r1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;labelPadding=0 4;startArrow=ERmandOne;startFill=0;endArrow=ERoneToMany;endFill=0;" target="recipe_ingredient-r2">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="25" y="505" />
@@ -736,7 +658,7 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="355" y="535" />
-              <mxPoint x="355" y="825" />
+              <mxPoint x="355" y="805" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -744,15 +666,15 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="25" y="505" />
-              <mxPoint x="25" y="855" />
+              <mxPoint x="25" y="835" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="edge-cook-ded" edge="1" parent="1" source="cooking-r1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;labelPadding=0 4;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;" target="lot_deduction-r2">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="690" y="795" />
-              <mxPoint x="690" y="825" />
+              <mxPoint x="690" y="775" />
+              <mxPoint x="690" y="805" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -768,7 +690,7 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1015" y="265" />
-              <mxPoint x="1015" y="855" />
+              <mxPoint x="1015" y="835" />
             </Array>
           </mxGeometry>
         </mxCell>
