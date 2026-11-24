@@ -37,7 +37,7 @@ Proposal   →   ER Diagram +   →    SQL           →    Final Report +
 หัวข้อยืนยันแล้ว เริ่มตาม[ปฏิทิน 9 รอบ](#-ปฏิทิน-9-รอบ-พุธ--อังคาร) · วาดด้วย draw.io (หน้า 13) · งานอยู่ใน [`../design/`](../design/)
 
 - [x] เขียนกฎของระบบ (business rules) แบบตัวอย่างร้านเสื้อผ้า หน้า 28–31 → [`../design/business-rules.md`](../design/business-rules.md)
-- [ ] ER Diagram ที่ครอบข้อมูลหลักครบ 8 อย่าง · ร่างแรก merge แล้วใน PR #24 · เหลือ #20 (รอบ 2)
+- [x] ER Diagram ที่ครอบข้อมูลหลักครบ 8 อย่าง · ร่างแรก merge แล้วใน PR #24 · ตรวจทั้งรูปเทียบกฎแล้วใน #20
 - [ ] แปลง ER เป็น relational schema พร้อม PK / FK
 - [ ] Normalization
 
