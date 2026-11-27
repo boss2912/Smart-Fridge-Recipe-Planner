@@ -14,7 +14,7 @@
 
 > สถานะของแต่ละขั้นอยู่ที่ [`docs/ROADMAP.md`](docs/ROADMAP.md) — งานเสร็จให้ติ๊กที่นั่นพร้อมแก้บรรทัดสถานะใน README ของโฟลเดอร์นั้น ไม่ต้องแก้ไฟล์นี้
 
-ตัดสินแล้ว: ใช้ PostgreSQL ([ADR-005](docs/DECISIONS.md#adr-005--เลือก-dbms)) · แบ่งงาน 7 คน → [`docs/TEAM_AND_WORKFLOW.md`](docs/TEAM_AND_WORKFLOW.md) · เว็บใช้ Python + Flask และวิธีรัน ([ADR-009](docs/DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป)) · กติกา branch → [`CONTRIBUTING.md`](CONTRIBUTING.md)
+ตัดสินแล้ว: ใช้ PostgreSQL ([ADR-005](docs/DECISIONS.md#adr-005--เลือก-dbms)) · แบ่งงาน 7 คน → [`docs/TEAM_AND_WORKFLOW.md`](docs/TEAM_AND_WORKFLOW.md) · เว็บใช้ Python + Flask ([ADR-009](docs/DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป)) และรันด้วย Docker Compose ([ADR-021](docs/DECISIONS.md#adr-021--รันเว็บแอปและฐานข้อมูลด้วย-docker-compose)) · กติกา branch → [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ---
 
@@ -60,7 +60,7 @@
 
 ## 🏗️ สถาปัตยกรรม — Distributed System
 
-ระบบแบ่งเป็น 4 ส่วน คือ Nginx (ทางเข้า) · frontend (หน้าเว็บ) · backend (Flask) · database (DBMS) ผู้ใช้ทั้ง 2 กลุ่มเข้าใช้ผ่านเบราว์เซอร์ · frontend กับ backend รันเป็นโปรแกรม Flask ตัวเดียว · วันนำเสนอใช้ 2 เครื่อง: เครื่อง 1 Nginx · เครื่อง 2 Flask + PostgreSQL ([ADR-009](docs/DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป))
+ระบบแบ่งเป็น 4 ส่วน คือ Nginx (ทางเข้า) · frontend (หน้าเว็บ) · backend (Flask) · database (DBMS) ผู้ใช้ทั้ง 2 กลุ่มเข้าใช้ผ่านเบราว์เซอร์ · frontend กับ backend รันเป็นโปรแกรม Flask ตัวเดียว · วันนำเสนอใช้ 2 เครื่องผ่าน Docker: เครื่อง 1 Nginx · เครื่อง 2 Flask + PostgreSQL ([ADR-021](docs/DECISIONS.md#adr-021--รันเว็บแอปและฐานข้อมูลด้วย-docker-compose))
 
 ```text
         Browser (สมาชิกในครัวเรือน / ผู้ดูแลระบบ)
@@ -122,12 +122,14 @@ Smart-Fridge-Recipe-Planner/
 ├── design/     ขั้น 2 ER Diagram + Schema
 ├── database/   ขั้น 3 SQL · ส่วน database
 ├── report/     ขั้น 4 รายงาน + สไลด์
-├── nginx/      ส่วน Nginx · ทางเข้าเดียว
-├── frontend/   ส่วน frontend · หน้าเว็บ
-├── backend/    ส่วน backend · Flask + ล็อกอิน
-├── .github/    แม่แบบ PR + issue
-├── AGENTS.md   คำสั่งสำหรับ AI (ภาษาอังกฤษ) · บอกว่าอ่านไฟล์ไหนเมื่อไร
-└── CLAUDE.md   ชี้ไปที่ AGENTS.md ให้ Claude โหลดตาม
+├── nginx/          ส่วน Nginx · ทางเข้าเดียว
+├── frontend/       ส่วน frontend · หน้าเว็บ
+├── backend/        ส่วน backend · Flask + ล็อกอิน
+├── Dockerfile      สร้างอิมเมจ Flask (Python 3.14)
+├── compose.yaml    สั่งรัน Flask + PostgreSQL 18 ด้วย Docker Compose
+├── .github/        แม่แบบ PR + issue
+├── AGENTS.md       คำสั่งสำหรับ AI (ภาษาอังกฤษ) · บอกว่าอ่านไฟล์ไหนเมื่อไร
+└── CLAUDE.md       ชี้ไปที่ AGENTS.md ให้ Claude โหลดตาม
 ```
 
 **ทุกโฟลเดอร์ยกเว้น `docs/` กับ `.github/` มี `README.md` ของตัวเอง** บอกว่าใส่อะไร ใครดูแล และอ้างอิงสไลด์หน้าไหน
@@ -146,56 +148,36 @@ Smart-Fridge-Recipe-Planner/
 | [`docs/DECISIONS.md`](docs/DECISIONS.md) | **ก่อนแก้อะไรที่ดูแปลก** — บันทึกว่าทำไมถึงตัดสินใจแบบนั้น |
 | [`docs/TEAM_AND_WORKFLOW.md`](docs/TEAM_AND_WORKFLOW.md) | แบ่งงาน · จุดที่ต้องตกลงกันก่อนลงมือ |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | ก่อน commit หรือเปิด PR ครั้งแรก |
-| [`INSTALL.md`](INSTALL.md) | ติดตั้ง — Windows · macOS · Linux · Conda · PostgreSQL 18 · แก้ปัญหา |
+| [`INSTALL.md`](INSTALL.md) | ติดตั้งและรันด้วย Docker Compose — Windows · macOS · Linux · แก้ปัญหา |
 
 ---
 
-## 🚀 การติดตั้ง
+## 🚀 การติดตั้งและรัน (Docker)
 
-📖 **คู่มือเต็ม → [`INSTALL.md`](INSTALL.md)** (Windows · macOS · Linux · Conda · PostgreSQL 18 · แก้ปัญหา)
+📖 **คู่มือเต็ม → [`INSTALL.md`](INSTALL.md)** (Windows · macOS · Linux · แก้ปัญหา)
 
-**Python 3.14** · ทุกเวอร์ชันล็อกไว้ใน [`backend/requirements.txt`](backend/requirements.txt) — ตรวจด้วย `python -m pytest backend` ต้องได้ 17 passed
+ทุกส่วนรันอยู่ใน Docker Compose (**Python 3.14.10** + **PostgreSQL 18.7** + library ที่ล็อกเวอร์ชันไว้ใน [`backend/requirements.txt`](backend/requirements.txt)) ไม่ต้องลง Python หรือ PostgreSQL แยกในเครื่อง ([ADR-021](docs/DECISIONS.md#adr-021--รันเว็บแอปและฐานข้อมูลด้วย-docker-compose))
 
-### ติดตั้งเร็วสุด (dev บนเครื่องเดียว)
+### เริ่มรันเร็วสุด (ใช้คำสั่งเดียวกันทุกระบบ)
 
-**Windows**
-```powershell
-git clone https://github.com/boss2912/Smart-Fridge-Recipe-Planner.git
-cd Smart-Fridge-Recipe-Planner
-git switch develop
-py -3.14 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-pip install -r backend/requirements.txt
-```
+เปิดโปรแกรม **Docker Desktop** ให้ทำงานก่อน แล้วรัน:
 
-**macOS / Linux**
 ```bash
 git clone https://github.com/boss2912/Smart-Fridge-Recipe-Planner.git
 cd Smart-Fridge-Recipe-Planner
 git switch develop
-python3.14 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r backend/requirements.txt
+docker compose up -d --build
 ```
 
-**Conda** (ใช้ได้ทุกระบบ)
-```bash
-git clone https://github.com/boss2912/Smart-Fridge-Recipe-Planner.git
-cd Smart-Fridge-Recipe-Planner
-git switch develop
-conda env create -f environment.yml
-conda activate smartfridge
-```
-
-### รัน
+### ตรวจว่าพร้อมใช้งาน
 
 ```bash
-flask --app backend/app run --debug
+docker compose exec web python -m pytest backend -v
+docker compose exec db psql -c "SELECT version(), current_database(), current_setting('TimeZone');"
 ```
 
-เปิด http://127.0.0.1:5000 · ตอนพัฒนารัน Flask ตรง ไม่ผ่าน Nginx · ยังไม่ต่อ database (รอ ER) แต่ให้ลง PostgreSQL 18 ไว้ก่อนรอบ 2 ตาม[หัวข้อ 6 ของ INSTALL.md](INSTALL.md#6-ติดตั้ง-postgresql-18)
+- `pytest` ต้องได้ **`16 passed`** · `psql` ต้องขึ้นต้นด้วย **`PostgreSQL 18`** ฐานข้อมูล **`smartfridge`** และ timezone **`Asia/Bangkok`**
+- เปิด http://127.0.0.1:5000 · ตอนพัฒนารัน Flask ตรง ไม่ผ่าน Nginx และยังไม่ต่อ database จนกว่ารอบ 5 · หยุดรันด้วย `docker compose down`
 
 ---
 

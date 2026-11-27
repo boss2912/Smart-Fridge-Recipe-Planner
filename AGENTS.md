@@ -62,4 +62,4 @@ Large files — do not read whole:
 - A decision others might revert → add a new ADR in `docs/DECISIONS.md`; never delete old ADRs, mark them 🔁.
 - Each folder's `README.md` must be updated when its contents change.
 - Do not edit folders owned by other members without saying so (owners in `docs/TEAM_AND_WORKFLOW.md`).
-- DBMS is PostgreSQL (ADR-005). Web stack is Python + Flask (ADR-009).
+- DBMS is PostgreSQL (ADR-005). Web stack is Python + Flask (ADR-009), run via Docker Compose (ADR-021: `docker compose exec web ...` / `db ...`).
