@@ -1,0 +1,54 @@
+# การตั้งค่า Nginx เป็นทางเข้าเดียวของ Smart Fridge (ADR-008 · ADR-009)
+# ไฟล์นี้เป็น template: ตอนเปิด container อิมเมจ nginx จะแทนค่า ${BACKEND_UPSTREAM}
+# แล้วสร้างไฟล์จริงไว้ที่ /etc/nginx/conf.d/default.conf โดยอัตโนมัติ
+
+server {
+    listen 80;
+    server_name _;
+
+    # ซ่อนเลขรุ่นของ Nginx ใน response header และหน้า error
+    server_tokens off;
+
+    # จำกัดขนาดคำขอสูงสุดต่อครั้ง (กันการส่งข้อมูลใหญ่ผิดปกติ)
+    client_max_body_size 5m;
+
+    # Security headers พื้นฐาน (วางระดับ server เพื่อให้มีผลทั้ง / และ /static/)
+    # หมายเหตุ: ห้ามใส่ add_header เพิ่มใน location ย่อย ไม่งั้น Nginx จะล้าง header ชุดนี้ใน location นั้น
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # จุดตรวจสุขภาพของ Nginx เอง (ใช้กับ Docker healthcheck โดยไม่ต้องพึ่งว่า Flask เปิดอยู่หรือไม่)
+    location = /nginx-health {
+        access_log off;
+        default_type text/plain;
+        return 200 "ok\n";
+    }
+
+    # ส่งไฟล์ CSS / JS / รูป จากโฟลเดอร์ frontend/static/ เองโดยไม่ส่งต่อไปที่ Flask
+    # สำคัญ: ทั้ง location และ alias ต้องลงท้ายด้วย / คู่กัน เพื่อกันช่องโหว่ off-by-slash path traversal
+    location /static/ {
+        alias /usr/share/nginx/html/static/;
+        autoindex off;
+        try_files $uri =404;
+        # ใช้ expires แทน add_header เพื่อไม่ให้ security headers ด้านบนถูกยกเลิก
+        expires 1h;
+    }
+
+    # คำขออื่นทั้งหมดส่งต่อไปที่ Flask (เครื่อง 2 วันเดโม หรือพอร์ต 5000 บนเครื่องตัวเองตอนทดสอบ)
+    location / {
+        proxy_pass http://${BACKEND_UPSTREAM};
+        proxy_http_version 1.1;
+
+        # ส่งข้อมูลผู้เรียกตัวจริงต่อให้ Flask (Host รวมเลขพอร์ต · IP จริง · โปรโตคอล)
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # กันคำขอค้างนานเกินไปถ้า Flask หรือฐานข้อมูลตอบช้า
+        proxy_connect_timeout 5s;
+        proxy_send_timeout 30s;
+        proxy_read_timeout 30s;
+    }
+}
