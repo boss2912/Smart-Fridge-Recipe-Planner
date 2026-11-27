@@ -1,0 +1,51 @@
+# รันระบบ Smart Fridge ตอนพัฒนาในเครื่องตัวเอง (ADR-021)
+# เริ่มรัน:  docker compose up -d --build
+# หยุดรัน:  docker compose down
+
+services:
+  web:
+    build: .
+    ports:
+      # ผูกเฉพาะ 127.0.0.1 เพื่อไม่ให้เครื่องอื่นในวง LAN เข้าถึง Flask debugger ได้
+      - "127.0.0.1:${FLASK_PORT:-5000}:5000"
+    environment:
+      # เตรียมไว้ให้ backend ต่อฐานข้อมูลในรอบ 5 (ชื่อ host ภายใน Docker คือ db)
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-smartfridge}
+      TZ: Asia/Bangkok
+    volumes:
+      # เชื่อมโฟลเดอร์โค้ดเข้า container แก้ไฟล์บนเครื่องแล้วหน้าเว็บเปลี่ยนทันที
+      - ./backend:/app/backend
+      - ./frontend:/app/frontend
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    # PostgreSQL 18 ล็อกเลขรุ่นตาม INSTALL.md
+    image: postgres:18.7-bookworm
+    # ตั้ง timezone เป็นเวลาไทย เพื่อให้ CURRENT_DATE ตัดวันตอน 00:00 เวลาไทย ไม่ใช่ UTC (07:00)
+    command: ["postgres", "-c", "timezone=Asia/Bangkok"]
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-smartfridge}
+      PGUSER: ${POSTGRES_USER:-postgres}
+      PGDATABASE: ${POSTGRES_DB:-smartfridge}
+      TZ: Asia/Bangkok
+      PGTZ: Asia/Bangkok
+    volumes:
+      # PostgreSQL 18 เก็บข้อมูลไว้ใต้ /var/lib/postgresql (ต่างจากรุ่น 17 ที่ใช้ /var/lib/postgresql/data)
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      # ใส่ -h 127.0.0.1 เพื่อเช็คผ่าน TCP หลัง initdb เสร็จจริง ไม่ติดช่วงเปิด unix socket ชั่วคราวตอนสร้าง DB ครั้งแรก
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-smartfridge}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    # ไม่เปิดพอร์ต 5432 ออกสู่เครื่องตัวเองเป็นค่าเดิม เพื่อไม่ให้ชนกับ PostgreSQL ที่อาจลงค้างในเครื่อง
+    # ถ้าต้องการใช้โปรแกรมดูตารางจากนอก Docker (เช่น DBeaver) ให้เอา # สองบรรทัดข้างล่างออก
+    # ports:
+    #   - "127.0.0.1:5433:5432"
+
+volumes:
+  pgdata:

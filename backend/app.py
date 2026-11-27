@@ -1,6 +1,6 @@
 """โปรแกรม Flask ของ Smart Fridge
 
-รันจาก root ของ repo:  flask --app backend/app run --debug
+รันด้วย Docker Compose:  docker compose up -d --build
 วิธีติดตั้งอยู่ใน INSTALL.md
 
 template กับ CSS / JS / รูป อยู่ในโฟลเดอร์ frontend/ (ADR-009)
