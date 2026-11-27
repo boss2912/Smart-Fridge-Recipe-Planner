@@ -173,10 +173,10 @@ docker compose up -d --build
 
 ```bash
 docker compose exec web python -m pytest backend -v
-docker compose exec db psql -U postgres -d smartfridge -c "SELECT version();"
+docker compose exec db psql -c "SELECT version(), current_database(), current_setting('TimeZone');"
 ```
 
-- `pytest` ต้องได้ **`16 passed`** · `psql` ต้องขึ้นต้นด้วย **`PostgreSQL 18`**
+- `pytest` ต้องได้ **`16 passed`** · `psql` ต้องขึ้นต้นด้วย **`PostgreSQL 18`** ฐานข้อมูล **`smartfridge`** และ timezone **`Asia/Bangkok`**
 - เปิด http://127.0.0.1:5000 · ตอนพัฒนารัน Flask ตรง ไม่ผ่าน Nginx และยังไม่ต่อ database จนกว่ารอบ 5 · หยุดรันด้วย `docker compose down`
 
 ---
