@@ -1,27 +1,25 @@
-# รัน Nginx ด้วย Docker (ทางเข้าเดียวของ Smart Fridge · ADR-008 · ADR-009)
-# ทดสอบในเครื่อง (ค่าเริ่มต้นผูก 127.0.0.1:8080 ชี้ไป Flask พอร์ต 5000 บนเครื่องเดียวกัน):
+# รัน Nginx แยกบนเครื่อง 1 สำหรับเดโม 2 เครื่อง (ADR-008 · ADR-021)
+# หมายเหตุ: ถ้าต้องการทดสอบบนเครื่องเดียว ให้รันจาก root ของโปรเจกต์แทน:
+#   docker compose --profile nginx up -d
+#
+# สำหรับเครื่อง 1 วันเดโม: คัดลอก .env.example เป็น .env แล้วกรอก IP เครื่อง 2 ก่อนสั่ง:
 #   cd nginx && docker compose up -d
 # หยุดรัน:
 #   cd nginx && docker compose down
-# วันเดโม 2 เครื่อง (เครื่อง 1): คัดลอก .env.example เป็น .env แล้วแก้ค่าตาม IP เครื่อง 2
 
 services:
   nginx:
     # ล็อกเลขรุ่น Nginx 1.28.3 บน Debian 13 (Trixie · stable ปัจจุบัน)
     image: nginx:1.28.3-trixie
     ports:
-      # ค่าเริ่มต้นผูก 127.0.0.1:8080 กันเปิด Flask --debug ออกวง LAN ตอนทดสอบในเครื่อง
-      # วันเดโมบนเครื่อง 1 เปลี่ยนใน .env เป็น NGINX_BIND=0.0.0.0 และ NGINX_PORT=80
+      # ค่าเริ่มต้นผูก 127.0.0.1:8080 เพื่อความปลอดภัย · วันเดโมแก้ใน .env เป็น NGINX_BIND=0.0.0.0 และ NGINX_PORT=80
       - "${NGINX_BIND:-127.0.0.1}:${NGINX_PORT:-8080}:80"
     environment:
-      # ที่อยู่ของ Flask (เครื่อง 2 วันเดโม หรือ host.docker.internal:5000 ตอนทดสอบเครื่องเดียว)
-      BACKEND_UPSTREAM: ${BACKEND_UPSTREAM:-host.docker.internal:5000}
+      # บังคับกำหนด IP:PORT ของเครื่อง 2 ใน nginx/.env (เช่น 192.168.1.20:5000)
+      BACKEND_UPSTREAM: ${BACKEND_UPSTREAM:?กรุณากำหนด BACKEND_UPSTREAM (IP:PORT ของเครื่อง 2) ใน nginx/.env}
       # จำกัดให้ envsubst แทนค่าเฉพาะ BACKEND_UPSTREAM ไม่ยุ่งกับตัวแปรของ Nginx ($http_host ฯลฯ)
       NGINX_ENVSUBST_FILTER: "^BACKEND_UPSTREAM$"
       TZ: Asia/Bangkok
-    extra_hosts:
-      # ทำให้ host.docker.internal ใช้ได้บน Linux ด้วย (Windows/macOS Docker Desktop มีให้อยู่แล้ว)
-      - "host.docker.internal:host-gateway"
     volumes:
       # เมานต์ template config และไฟล์ static แบบอ่านอย่างเดียว (:ro)
       - ./default.conf.template:/etc/nginx/templates/default.conf.template:ro

@@ -9,3 +9,7 @@
 โปรแกรม Flask (Python): รับคำขอที่ [`nginx/`](../nginx/) ส่งต่อมา ตรวจล็อกอินและสิทธิ์ของผู้ใช้ 2 กลุ่ม อ่านและเขียนข้อมูลใน [`database/`](../database/) แล้วส่งหน้าเว็บจาก template ของ [`frontend/`](../frontend/) · วันนำเสนอรันบนเครื่อง 2 คู่กับ PostgreSQL ([ADR-021](../docs/DECISIONS.md#adr-021--รันเว็บแอปและฐานข้อมูลด้วย-docker-compose))
 
 สิ่งที่ส่วนนี้ต้องมี → [ตาราง "แต่ละส่วนต้องมีอะไร" ใน README](../README.md#แต่ละส่วนต้องมีอะไร)
+
+## หมายเหตุเมื่อรันหลัง Nginx (รอบ 5 / รอบ 7)
+
+[`nginx/default.conf.template`](../nginx/default.conf.template) ส่ง header `X-Forwarded-For` (`$remote_addr`) และ `X-Forwarded-Proto` มาให้ Flask — ตอนเพิ่มล็อกอินหรือสร้างลิงก์แบบเต็ม (`url_for(..., _external=True)`) ในรอบ 5 ให้ครอบแอปด้วย `ProxyFix(app.wsgi_app, x_for=1, x_proto=1)` จาก `werkzeug.middleware.proxy_fix` เพื่อให้ Flask อ่าน IP และโปรโตคอลของผู้ใช้จริงแทนค่าของ Nginx
