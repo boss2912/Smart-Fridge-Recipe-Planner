@@ -47,5 +47,29 @@ services:
     # ports:
     #   - "127.0.0.1:5433:5432"
 
+  nginx:
+    # เปิดเฉพาะตอนต้องการทดสอบผ่าน Nginx: docker compose --profile nginx up -d
+    # อยู่ network เดียวกับ web จึงชี้ web:5000 ได้ตรงๆ ทุก OS (Windows · macOS · Linux)
+    profiles: ["nginx"]
+    image: nginx:1.28.3-trixie
+    ports:
+      # ผูกเฉพาะ 127.0.0.1 กันเปิด Flask --debug ออกวง LAN ตอนทดสอบในเครื่อง
+      - "127.0.0.1:${NGINX_PORT:-8080}:80"
+    environment:
+      BACKEND_UPSTREAM: web:5000
+      # จำกัดให้ envsubst แทนค่าเฉพาะ BACKEND_UPSTREAM ไม่ยุ่งกับตัวแปรของ Nginx ($http_host ฯลฯ)
+      NGINX_ENVSUBST_FILTER: "^BACKEND_UPSTREAM$"
+      TZ: Asia/Bangkok
+    volumes:
+      - ./nginx/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ./frontend/static:/usr/share/nginx/html/static:ro
+    depends_on:
+      - web
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1/nginx-health || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
 volumes:
   pgdata:

@@ -67,7 +67,7 @@ Phase 3 มี Consultation กับ Final Presentation (หน้า 10) · �
 - [x] เขียนวิธีติดตั้งและรันด้วย Docker Compose (Flask + PostgreSQL 18) ([ADR-021](DECISIONS.md#adr-021--รันเว็บแอปและฐานข้อมูลด้วย-docker-compose)) → [`../INSTALL.md`](../INSTALL.md) (#32)
 - [x] โครง Flask + template (#11)
 - [ ] ตกลงว่าแต่ละหน้าได้ข้อมูลอะไรจาก Flask และส่งอะไรกลับ ([จุดที่ต้องคุยกันก่อนลงมือ](TEAM_AND_WORKFLOW.md#จุดที่ต้องคุยกันก่อนลงมือ))
-- [ ] Nginx · frontend · backend ตาม[ตารางใน README](../README.md#แต่ละส่วนต้องมีอะไร)
+- [ ] Nginx · frontend · backend ตาม[ตารางใน README](../README.md#แต่ละส่วนต้องมีอะไร) (#35)
 - [ ] backend ต่อ database (PostgreSQL · [ADR-005](DECISIONS.md#adr-005--เลือก-dbms))
 
 ---

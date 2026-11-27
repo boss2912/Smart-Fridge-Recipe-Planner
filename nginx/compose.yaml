@@ -1,0 +1,31 @@
+# รัน Nginx แยกบนเครื่อง 1 สำหรับเดโม 2 เครื่อง (ADR-008 · ADR-021)
+# หมายเหตุ: ถ้าต้องการทดสอบบนเครื่องเดียว ให้รันจาก root ของโปรเจกต์แทน:
+#   docker compose --profile nginx up -d
+#
+# สำหรับเครื่อง 1 วันเดโม: คัดลอก .env.example เป็น .env แล้วกรอก IP เครื่อง 2 ก่อนสั่ง:
+#   cd nginx && docker compose up -d
+# หยุดรัน:
+#   cd nginx && docker compose down
+
+services:
+  nginx:
+    # ล็อกเลขรุ่น Nginx 1.28.3 บน Debian 13 (Trixie · stable ปัจจุบัน)
+    image: nginx:1.28.3-trixie
+    ports:
+      # ค่าเริ่มต้นผูก 127.0.0.1:8080 เพื่อความปลอดภัย · วันเดโมแก้ใน .env เป็น NGINX_BIND=0.0.0.0 และ NGINX_PORT=80
+      - "${NGINX_BIND:-127.0.0.1}:${NGINX_PORT:-8080}:80"
+    environment:
+      # บังคับกำหนด IP:PORT ของเครื่อง 2 ใน nginx/.env (เช่น 192.168.1.20:5000)
+      BACKEND_UPSTREAM: ${BACKEND_UPSTREAM:?กรุณากำหนด BACKEND_UPSTREAM (IP:PORT ของเครื่อง 2) ใน nginx/.env}
+      # จำกัดให้ envsubst แทนค่าเฉพาะ BACKEND_UPSTREAM ไม่ยุ่งกับตัวแปรของ Nginx ($http_host ฯลฯ)
+      NGINX_ENVSUBST_FILTER: "^BACKEND_UPSTREAM$"
+      TZ: Asia/Bangkok
+    volumes:
+      # เมานต์ template config และไฟล์ static แบบอ่านอย่างเดียว (:ro)
+      - ./default.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ../frontend/static:/usr/share/nginx/html/static:ro
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1/nginx-health || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
