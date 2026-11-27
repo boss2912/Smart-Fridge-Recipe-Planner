@@ -23,6 +23,8 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: ${POSTGRES_DB:-smartfridge}
+      PGUSER: ${POSTGRES_USER:-postgres}
+      PGDATABASE: ${POSTGRES_DB:-smartfridge}
     volumes:
       # PostgreSQL 18 เก็บข้อมูลไว้ใต้ /var/lib/postgresql (ต่างจากรุ่น 17 ที่ใช้ /var/lib/postgresql/data)
       - pgdata:/var/lib/postgresql
