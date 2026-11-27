@@ -1,0 +1,40 @@
+# รันระบบ Smart Fridge ตอนพัฒนาในเครื่องตัวเอง (ADR-021)
+# เริ่มรัน:  docker compose up -d --build
+# หยุดรัน:  docker compose down
+
+services:
+  web:
+    build: .
+    ports:
+      # ผูกเฉพาะ 127.0.0.1 เพื่อไม่ให้เครื่องอื่นในวง LAN เข้าถึง Flask debugger ได้
+      - "127.0.0.1:${FLASK_PORT:-5000}:5000"
+    volumes:
+      # เชื่อมโฟลเดอร์โค้ดเข้า container แก้ไฟล์บนเครื่องแล้วหน้าเว็บเปลี่ยนทันที
+      - ./backend:/app/backend
+      - ./frontend:/app/frontend
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    # PostgreSQL 18 ล็อกเลขรุ่นตาม INSTALL.md
+    image: postgres:18.7-bookworm
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-smartfridge}
+    volumes:
+      # PostgreSQL 18 เก็บข้อมูลไว้ใต้ /var/lib/postgresql (ต่างจากรุ่น 17 ที่ใช้ /var/lib/postgresql/data)
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-smartfridge}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    # ไม่เปิดพอร์ต 5432 ออกสู่เครื่องตัวเองเป็นค่าเดิม เพื่อไม่ให้ชนกับ PostgreSQL ที่อาจลงค้างในเครื่อง
+    # ถ้าต้องการใช้โปรแกรมดูตารางจากนอก Docker (เช่น DBeaver) ให้เอา # สองบรรทัดข้างล่างออก
+    # ports:
+    #   - "127.0.0.1:5433:5432"
+
+volumes:
+  pgdata:

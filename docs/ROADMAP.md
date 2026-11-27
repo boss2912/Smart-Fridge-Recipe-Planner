@@ -64,7 +64,7 @@ Phase 3 มี Consultation กับ Final Presentation (หน้า 10) · �
 
 เริ่มพร้อมขั้น 2 แล้วทำคู่กันไป ([ADR-008](DECISIONS.md#adr-008--ทำเป็นเว็บแอปที่ใช้งานได้จริง)) · งานอยู่ใน [`../nginx/`](../nginx/) · [`../frontend/`](../frontend/) · [`../backend/`](../backend/)
 
-- [x] เขียนวิธีติดตั้งและรันในเครื่องตัวเอง (Python + PostgreSQL) ([ADR-009](DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป)) → [`../INSTALL.md`](../INSTALL.md)
+- [x] เขียนวิธีติดตั้งและรันด้วย Docker Compose (Flask + PostgreSQL 18) ([ADR-021](DECISIONS.md#adr-021--รันเว็บแอปและฐานข้อมูลด้วย-docker-compose)) → [`../INSTALL.md`](../INSTALL.md) (#32)
 - [x] โครง Flask + template (#11)
 - [ ] ตกลงว่าแต่ละหน้าได้ข้อมูลอะไรจาก Flask และส่งอะไรกลับ ([จุดที่ต้องคุยกันก่อนลงมือ](TEAM_AND_WORKFLOW.md#จุดที่ต้องคุยกันก่อนลงมือ))
 - [ ] Nginx · frontend · backend ตาม[ตารางใน README](../README.md#แต่ละส่วนต้องมีอะไร)
@@ -80,7 +80,7 @@ Phase 3 มี Consultation กับ Final Presentation (หน้า 10) · �
 |---|---|---|---|
 | 0 | 13–17 พ.ย. | ตั้งทีม (ประชุมครั้งที่ 1) | |
 | 1 | 18–24 พ.ย. | เริ่ม ER (กฎของระบบเสร็จก่อนแผน) | |
-| 2 | 25 พ.ย.–1 ธ.ค. | ER ต่อ · ทุกคนรัน Flask และลง PostgreSQL 18 ในเครื่องตัวเองได้ (ยังไม่ต่อกัน ต่อจริงรอบ 5) | |
+| 2 | 25 พ.ย.–1 ธ.ค. | ER ต่อ · ทุกคนรัน Flask และ PostgreSQL 18 ด้วย Docker ในเครื่องตัวเองได้ (ยังไม่ต่อกัน ต่อจริงรอบ 5) (#27) | |
 | 3 | 2–8 ธ.ค. | ER ครบข้อมูลหลัก 8 อย่าง · ตกลงรายการหน้าเว็บและข้อมูลแต่ละหน้า | จ. 7 |
 | 4 | 9–15 ธ.ค. | Relational schema + normalization · หน้าเว็บหลักใช้ข้อมูลสมมติ · ปิดขั้น 2 · เปิด issue SQL คนละ 1 เรื่อง | พฤ. 10 |
 | 5 | 16–22 ธ.ค. | SQL สร้างตาราง + ข้อมูลตัวอย่าง (ทุกคนคนละ 1 เรื่อง) · backend ต่อ database · ล็อกอิน | |
@@ -92,7 +92,7 @@ Phase 3 มี Consultation กับ Final Presentation (หน้า 10) · �
 ### เรื่องที่ต้องตัดสินก่อนเริ่มงาน
 
 1. ✅ DBMS: PostgreSQL — [ADR-005](DECISIONS.md#adr-005--เลือก-dbms)
-2. ✅ ภาษาเว็บ: Python + Flask · HTML / CSS + JavaScript เล็กน้อย · ✅ เดโม 2 เครื่อง: Nginx | Flask + PostgreSQL · ✅ ตอนพัฒนาลง Python กับ PostgreSQL เอง — [ADR-009](DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป)
+2. ✅ ภาษาเว็บ: Python + Flask · HTML / CSS + JavaScript เล็กน้อย ([ADR-009](DECISIONS.md#adr-009--เลือกภาษาและวิธีรันเว็บแอป)) · ✅ รันด้วย Docker Compose ทั้งตอนพัฒนาในเครื่องตัวเองและตอนเดโม 2 เครื่อง (Nginx | Flask + PostgreSQL) — [ADR-021](DECISIONS.md#adr-021--รันเว็บแอปและฐานข้อมูลด้วย-docker-compose)
 3. ✅ ใครรับงานไหนใน 9 งาน — [`TEAM_AND_WORKFLOW.md`](TEAM_AND_WORKFLOW.md)
 4. ✅ ไฟล์ ER: `.drawio` + `.drawio.png` แก้ทีละคน — [ADR-013](DECISIONS.md#adr-013--ไฟล์-er-เก็บทั้ง-drawio-และ-drawiopng)
 5. ✅ รายงานกับสไลด์ใช้ Word — [`../report/`](../report/)
