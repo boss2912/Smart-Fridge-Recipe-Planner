@@ -93,10 +93,10 @@ docker compose exec web python -m pytest backend -v
 ### 4.2 เช็คว่า PostgreSQL 18 ทำงานอยู่
 
 ```bash
-docker compose exec db psql -U postgres -d smartfridge -c "SELECT version();"
+docker compose exec db psql -c "SELECT version(), current_database(), current_setting('TimeZone');"
 ```
 
-ต้องเห็นบรรทัดที่ขึ้นต้นด้วย `PostgreSQL 18`
+ต้องเห็นบรรทัดที่ขึ้นต้นด้วย `PostgreSQL 18`, ฐานข้อมูล `smartfridge` (หรือชื่อที่ตั้งใน `.env`), และ `Asia/Bangkok` (ไม่ต้องใส่ `-U` / `-d` เพราะตั้งค่า `PGUSER` และ `PGDATABASE` ไว้ใน `compose.yaml` แล้ว)
 
 ### 4.3 เปิดหน้าเว็บ
 
@@ -111,7 +111,7 @@ docker compose up -d              # เปิดระบบ (ใช้ตอน
 docker compose up -d --build      # เปิดระบบพร้อมสร้างอิมเมจใหม่ (ใช้เมื่อ requirements.txt หรือ Dockerfile เปลี่ยน)
 docker compose ps                 # ดูว่า web กับ db ทำงานอยู่ไหม
 docker compose logs -f web        # ดูข้อความและ error ของ Flask แบบสด (ออกด้วย Ctrl+C)
-docker compose exec db psql -U postgres -d smartfridge   # เข้าหน้าคำสั่ง SQL ของ PostgreSQL (ออกด้วย \q)
+docker compose exec db psql       # เข้าหน้าคำสั่ง SQL ของ PostgreSQL (ออกด้วย \q)
 docker compose down               # หยุดระบบ (ข้อมูลในฐานข้อมูลยังอยู่)
 docker compose down -v            # หยุดระบบและลบข้อมูลฐานข้อมูลทิ้งทั้งหมดเพื่อเริ่มใหม่จากศูนย์
 ```
@@ -179,6 +179,17 @@ FLASK_PORT=5001 docker compose up -d
 
 ---
 
+### ❌ แก้ `POSTGRES_PASSWORD` (หรือ `POSTGRES_USER` / `POSTGRES_DB`) ใน `.env` แล้วแต่รหัสผ่านไม่เปลี่ยน
+
+อิมเมจ PostgreSQL อ่านค่า `POSTGRES_*` **เฉพาะตอนสร้างฐานข้อมูลครั้งแรกที่ volume ยังว่างอยู่เท่านั้น** ถ้าเคยรัน `docker compose up` ไปแล้ว รหัสเดิมจะยังค้างอยู่ใน volume `pgdata` → ถ้าต้องการเริ่มใหม่ด้วยรหัสใหม่ (ข้อมูลเก่าใน volume จะหายทั้งหมด) ให้สั่ง:
+
+```bash
+docker compose down -v
+docker compose up -d
+```
+
+---
+
 ### 💡 อยากใช้โปรแกรมดูตารางจากนอก Docker (เช่น DBeaver / pgAdmin / VS Code)
 
 ค่าเดิมใน [`compose.yaml`](compose.yaml) ไม่ได้เปิดพอร์ตของ `db` ออกมาที่เครื่องตัวเอง เพื่อไม่ให้ชนกับ PostgreSQL ที่บางคนอาจเคยลงไว้ในเครื่อง (`5432`) ถ้าต้องการต่อโปรแกรมดูตารางจากข้างนอก ให้เอาเครื่องหมาย `#` หน้า `ports:` ของ `db` ใน `compose.yaml` ออก แล้วต่อเข้า `127.0.0.1` พอร์ต `5433` (อย่า commit การแก้ส่วนตัวนี้ขึ้น PR)
@@ -193,7 +204,7 @@ FLASK_PORT=5001 docker compose up -d
 
 | ของ | เวอร์ชันที่ล็อก | ทำไมเลือกตัวนี้ |
 |---|---|---|
-| อิมเมจ Python (`web`) | `python:3.14.10-slim-bookworm` | Python 3.14 ยังได้รุ่นแก้บั๊กถึง ต.ค. 2027 · Debian 12 Bookworm เสถียรและใช้ `glibc` มาตรฐาน |
+| อิมเมจ Python (`web`) | `python:3.14.10-slim-bookworm` | Python 3.14 ยังได้รุ่นแก้บั๊กถึง ต.ค. 2027 · Debian 12 Bookworm (`oldstable` ที่ยังได้อัปเดตความปลอดภัย · ใช้ `glibc` มาตรฐาน และมีอิมเมจตรงรุ่นคู่กับ PostgreSQL 18) |
 | อิมเมจ PostgreSQL (`db`) | `postgres:18.7-bookworm` | PostgreSQL 18 ดูแลถึง พ.ย. 2030 · รุ่น 18 เก็บข้อมูลใน `/var/lib/postgresql` |
 | Flask | `3.1.3` | รุ่นแก้ช่องโหว่ ก.พ. 2026 |
 | Werkzeug | `3.1.9` | รุ่นแก้ช่องโหว่ ก.ย. 2026 |
