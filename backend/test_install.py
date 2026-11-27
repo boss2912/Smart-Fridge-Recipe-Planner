@@ -33,5 +33,5 @@ def test_package_version(name, locked):
     try:
         found = version(name)
     except PackageNotFoundError:
-        pytest.fail(f"ยังไม่ได้ลง {name} → pip install -r backend/requirements.txt")
+        pytest.fail(f"ยังไม่ได้ลง {name} → docker compose up -d --build")
     assert found == locked, f"{name} ต้องเป็น {locked} (ค่าที่ได้: {found})"

@@ -92,7 +92,7 @@ Phase 3  Mini-Project
 ### 2.6 ขั้นที่ 3 — SQL Implementation Script
 
 - เนื้อหาที่ต้องใช้: SQL DDL, DML, Advanced Queries & Join (หน้า 10)
-- DBMS: หน้า 9 ยกตัวอย่าง MySQL, PostgreSQL, Oracle, SQL Server แต่ไม่ได้บอกว่าโครงงานต้องใช้ตัวไหน กลุ่มเลือกเองได้ ยังไม่ได้เลือก ดู [ADR-005](DECISIONS.md#adr-005--เลือก-dbms)
+- DBMS: หน้า 9 ยกตัวอย่าง MySQL, PostgreSQL, Oracle, SQL Server แต่ไม่ได้บอกว่าโครงงานต้องใช้ตัวไหน กลุ่มเลือกเองได้ · กลุ่มเลือก **PostgreSQL** แล้ว ดู [ADR-005](DECISIONS.md#adr-005--เลือก-dbms)
 
 ### 2.7 ขั้นที่ 4 — Final Report & Presentation
 
